@@ -5,7 +5,7 @@
 #include "creation_resizing.h"
 
 LIST_QUEUE_NODE *StoreCustomers() {
-    char *filename = "Data.txt";
+    char *filename = "Data.csv";
     char *token;
     char row[BUFFER_SIZE];
     FILE *fp = fopen(filename, "r");
@@ -34,34 +34,29 @@ LIST_QUEUE_NODE *StoreCustomers() {
     fclose(fp);
     return head;
 }
-LIST_QUEUE_NODE *addCustomerHead(LIST_QUEUE_NODE *head, struct customer a) {
+LIST_QUEUE_NODE *addCustomerHead(LIST_QUEUE_NODE *head) {
     struct node *newNode = malloc(sizeof(LIST_QUEUE_NODE));
-    a.address = malloc(sizeof(char) * 100);
+    newNode->customer.address = malloc(sizeof(char) * 100);
     time_t t = time(NULL);
     struct tm tm = *localtime(&t);
-    printf("Insert customer ID:");
-    scanf("%d", &a.ID);
-    printf("Insert customer phone number:");
-    scanf("%d", &a.number);
-    printf("Insert customer Birthday (Format: DAY-MONTH-YEAR)");
-    scanf("%d", &a.birthday.day);
-    scanf("%d", &a.birthday.month);
-    scanf("%d", &a.birthday.year);
-    printf("Insert the address");
-    scanf("%s", a.address);
+    printf("Insert customer ID:\n");
+    scanf("%d", &newNode->customer.ID);
+    printf("Insert customer phone number:\n");
+    scanf("%d", &newNode->customer.number);
+    printf("Insert customer Birthday (Format: DAY-MONTH-YEAR):\n");
+    scanf("%d", &newNode->customer.birthday.day);
+    scanf("%d", &newNode->customer.birthday.month);
+    scanf("%d", &newNode->customer.birthday.year);
+    printf("Insert the address:\n");
+    scanf("%s", newNode->customer.address);
     printf("Billing cost:");
-    scanf("%d", &a.billingcost);
+    scanf("%d", &newNode->customer.billingcost);
     newNode->customer.registerdate.month = tm.tm_mon + 1;
-    newNode->customer.registerdate.day = tm.tm_mday + 1900;
-    newNode->customer.registerdate.year = tm.tm_year;
-    newNode->customer.ID = a.ID;
-    newNode->customer.number = a.number;
-    newNode->customer.billingcost = a.billingcost;
-    newNode->customer.birthday.day = a.birthday.day;
-    newNode->customer.birthday.month = a.birthday.month;
-    newNode->customer.birthday.year = a.birthday.year;
+    newNode->customer.registerdate.day = tm.tm_mday ;
+    newNode->customer.registerdate.year = tm.tm_year+ + 1900;
     newNode->next = head;
     head = newNode;
+   // head->next=NULL;
     nodeToCSV(head);
     return head;
 }
@@ -106,8 +101,7 @@ LIST_QUEUE_NODE * csvToNode(char *token, char* row) {
 
 LIST_QUEUE_NODE * nodeToCSV(LIST_QUEUE_NODE *head){
     char *filename = "Data.csv";
-    filename=strcat(filename,".csv");
-    FILE *fp=fopen(filename,"w+");
+    FILE *fp=fopen(filename,"a");
     while(head != NULL) {
         fprintf(fp, "%d;", head->customer.ID);
         fprintf(fp,"%d;", head->customer.number);
@@ -119,6 +113,7 @@ LIST_QUEUE_NODE * nodeToCSV(LIST_QUEUE_NODE *head){
         fprintf(fp,"%d;",head->customer.registerdate.year);
         fprintf(fp,"%s;",head->customer.address);
         fprintf(fp,"%d;",head->customer.billingcost);
+        fprintf(fp,"\n");
         head = head->next;
     }
 }

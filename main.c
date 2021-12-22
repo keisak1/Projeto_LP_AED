@@ -5,10 +5,9 @@
 
 int main() {
     LIST_QUEUE_NODE *head = NULL;
-    CUSTOMER a;
     StoreCustomers();
     head = StoreCustomers();
-    head = addCustomerHead(head, a);
+    head = addCustomerHead(head);
     printList(head);
     return 0;
 }
