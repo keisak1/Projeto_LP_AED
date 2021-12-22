@@ -34,6 +34,7 @@ LIST_QUEUE_NODE *StoreCustomers() {
     fclose(fp);
     return head;
 }
+
 LIST_QUEUE_NODE *addCustomerHead(LIST_QUEUE_NODE *head) {
     struct node *newNode = malloc(sizeof(LIST_QUEUE_NODE));
     newNode->customer.address = malloc(sizeof(char) * 100);
@@ -56,7 +57,6 @@ LIST_QUEUE_NODE *addCustomerHead(LIST_QUEUE_NODE *head) {
     newNode->customer.registerdate.year = tm.tm_year+ + 1900;
     newNode->next = head;
     head = newNode;
-   // head->next=NULL;
     nodeToCSV(head);
     return head;
 }
@@ -115,5 +115,16 @@ LIST_QUEUE_NODE * nodeToCSV(LIST_QUEUE_NODE *head){
         fprintf(fp,"%d;",head->customer.billingcost);
         fprintf(fp,"\n");
         head = head->next;
+    }
+}
+
+
+void CreateAndResizeArrayTrips(LIST_QUEUE_NODE *head, int numberoftrips){
+    if(head->customer.trips==NULL){
+        head->customer.trips = malloc(sizeof(char) * numberoftrips);
+        head->customer.NumberOfTrips = numberoftrips;
+    }else {
+        head->customer.trips = realloc(head->customer.trips, sizeof(char) * numberoftrips);
+        head->customer.NumberOfTrips = numberoftrips;
     }
 }
