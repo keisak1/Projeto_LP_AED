@@ -29,7 +29,7 @@ LIST_QUEUE_NODE *StoreCustomers() {
         newNode = csvToNode(token, row);
         prevNode->next = newNode;
         prevNode = newNode;
-        prevNode->next=NULL;
+        prevNode->next = NULL;
     }
     fclose(fp);
     return head;
@@ -53,15 +53,15 @@ LIST_QUEUE_NODE *addCustomerHead(LIST_QUEUE_NODE *head) {
     printf("Billing cost:");
     scanf("%d", &newNode->customer.billingcost);
     newNode->customer.registerdate.month = tm.tm_mon + 1;
-    newNode->customer.registerdate.day = tm.tm_mday ;
-    newNode->customer.registerdate.year = tm.tm_year+ + 1900;
+    newNode->customer.registerdate.day = tm.tm_mday;
+    newNode->customer.registerdate.year = tm.tm_year + +1900;
     newNode->next = head;
     head = newNode;
     nodeToCSV(head);
     return head;
 }
 
-void addCustomerTail(LIST_QUEUE_NODE *head) {
+void addCustomerTail(LIST_QUEUE_NODE *tail) {
     struct node *newNode = malloc(sizeof(LIST_QUEUE_NODE));
     newNode->customer.address = malloc(sizeof(char) * 100);
     time_t t = time(NULL);
@@ -79,14 +79,15 @@ void addCustomerTail(LIST_QUEUE_NODE *head) {
     printf("Billing cost:");
     scanf("%d", &newNode->customer.billingcost);
     newNode->customer.registerdate.month = tm.tm_mon + 1;
-    newNode->customer.registerdate.day = tm.tm_mday ;
-    newNode->customer.registerdate.year = tm.tm_year+ + 1900;
-    struct node *lastNode = head;
-    while(lastNode->next!=NULL){
+    newNode->customer.registerdate.day = tm.tm_mday;
+    newNode->customer.registerdate.year = tm.tm_year + +1900;
+    struct node *lastNode = tail;
+    while (lastNode->next != NULL) {
         lastNode = lastNode->next;
     }
     lastNode->next = newNode;
-    nodeToCSV(head);
+    lastNode->next->next = NULL;
+    apeendnodeToCSV(lastNode->next);
 }
 
 
@@ -102,7 +103,7 @@ void printList(LIST_QUEUE_NODE *head) {
 }
 
 
-LIST_QUEUE_NODE * csvToNode(char *token, char* row) {
+LIST_QUEUE_NODE *csvToNode(char *token, char *row) {
     struct node *newNode = (struct node *) malloc(sizeof(LIST_QUEUE_NODE));
     newNode->customer.address = malloc(sizeof(char) * 100);
     token = strtok(row, ";");
@@ -128,31 +129,51 @@ LIST_QUEUE_NODE * csvToNode(char *token, char* row) {
     return newNode;
 }
 
-LIST_QUEUE_NODE * nodeToCSV(LIST_QUEUE_NODE *head){
+LIST_QUEUE_NODE *nodeToCSV(LIST_QUEUE_NODE *head) {
     char *filename = "Data.csv";
-    FILE *fp=fopen(filename,"a");
-    while(head != NULL) {
+    FILE *fp = fopen(filename, "w");
+    while (head != NULL) {
         fprintf(fp, "%d;", head->customer.ID);
-        fprintf(fp,"%d;", head->customer.number);
-        fprintf(fp,"%d;",head->customer.birthday.day);
-        fprintf(fp,"%d;",head->customer.birthday.month);
-        fprintf(fp,"%d;",head->customer.birthday.year);
-        fprintf(fp,"%d;",head->customer.registerdate.day);
-        fprintf(fp,"%d;",head->customer.registerdate.month);
-        fprintf(fp,"%d;",head->customer.registerdate.year);
-        fprintf(fp,"%s;",head->customer.address);
-        fprintf(fp,"%d;",head->customer.billingcost);
-        fprintf(fp,"\n");
+        fprintf(fp, "%d;", head->customer.number);
+        fprintf(fp, "%d;", head->customer.birthday.day);
+        fprintf(fp, "%d;", head->customer.birthday.month);
+        fprintf(fp, "%d;", head->customer.birthday.year);
+        fprintf(fp, "%d;", head->customer.registerdate.day);
+        fprintf(fp, "%d;", head->customer.registerdate.month);
+        fprintf(fp, "%d;", head->customer.registerdate.year);
+        fprintf(fp, "%s;", head->customer.address);
+        fprintf(fp, "%d;", head->customer.billingcost);
+        fprintf(fp, "\n");
         head = head->next;
     }
+    fclose(fp);
 }
 
+LIST_QUEUE_NODE *apeendnodeToCSV(LIST_QUEUE_NODE *tail) {
+    char *filename = "Data.csv";
+    FILE *fp = fopen(filename, "a");
+    while (tail != NULL) {
+        fprintf(fp, "%d;", tail->customer.ID);
+        fprintf(fp, "%d;", tail->customer.number);
+        fprintf(fp, "%d;", tail->customer.birthday.day);
+        fprintf(fp, "%d;", tail->customer.birthday.month);
+        fprintf(fp, "%d;", tail->customer.birthday.year);
+        fprintf(fp, "%d;", tail->customer.registerdate.day);
+        fprintf(fp, "%d;", tail->customer.registerdate.month);
+        fprintf(fp, "%d;", tail->customer.registerdate.year);
+        fprintf(fp, "%s;", tail->customer.address);
+        fprintf(fp, "%d;", tail->customer.billingcost);
+        fprintf(fp, "\n");
+        tail = tail->next;
+    }
+    fclose(fp);
+}
 
-void CreateAndResizeArrayTrips(LIST_QUEUE_NODE *head, int numberoftrips){
-    if(head->customer.trips==NULL){
+void CreateAndResizeArrayTrips(LIST_QUEUE_NODE *head, int numberoftrips) {
+    if (head->customer.trips == NULL) {
         head->customer.trips = malloc(sizeof(char) * numberoftrips);
         head->customer.NumberOfTrips = numberoftrips;
-    }else {
+    } else {
         head->customer.trips = realloc(head->customer.trips, sizeof(char) * numberoftrips);
         head->customer.NumberOfTrips = numberoftrips;
     }
