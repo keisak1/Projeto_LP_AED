@@ -16,7 +16,7 @@
 
 
 typedef struct customer {
-    int ID;
+    int NIF;
     int number;
     struct birth {
         int day, month, year;

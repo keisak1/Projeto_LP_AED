@@ -40,8 +40,8 @@ LIST_QUEUE_NODE *addCustomerHead(LIST_QUEUE_NODE *head) {
     newNode->customer.address = malloc(sizeof(char) * 100);
     time_t t = time(NULL);
     struct tm tm = *localtime(&t);
-    printf("Insert customer ID:\n");
-    scanf("%d", &newNode->customer.ID);
+    printf("Insert customer NIF:\n");
+    scanf("%d", &newNode->customer.NIF);
     printf("Insert customer phone number:\n");
     scanf("%d", &newNode->customer.number);
     printf("Insert customer Birthday (Format: DAY-MONTH-YEAR):\n");
@@ -66,8 +66,8 @@ void addCustomerTail(LIST_QUEUE_NODE *tail) {
     newNode->customer.address = malloc(sizeof(char) * 100);
     time_t t = time(NULL);
     struct tm tm = *localtime(&t);
-    printf("Insert customer ID:\n");
-    scanf("%d", &newNode->customer.ID);
+    printf("Insert customer NIF:\n");
+    scanf("%d", &newNode->customer.NIF);
     printf("Insert customer phone number:\n");
     scanf("%d", &newNode->customer.number);
     printf("Insert customer Birthday (Format: DAY-MONTH-YEAR):\n");
@@ -97,7 +97,7 @@ void printList(LIST_QUEUE_NODE *head) {
         printf("Linked list is empty");
     }
     while (currentNode != NULL) {
-        printf("%d ", currentNode->customer.ID);
+        printf("%d ", currentNode->customer.NIF);
         currentNode = currentNode->next;
     }
 }
@@ -107,7 +107,7 @@ LIST_QUEUE_NODE *csvToNode(char *token, char *row) {
     struct node *newNode = (struct node *) malloc(sizeof(LIST_QUEUE_NODE));
     newNode->customer.address = malloc(sizeof(char) * 100);
     token = strtok(row, ";");
-    newNode->customer.ID = atoi(token);
+    newNode->customer.NIF = atoi(token);
     token = strtok(NULL, ";");
     newNode->customer.number = atoi(token);
     token = strtok(NULL, ";");
@@ -133,7 +133,7 @@ LIST_QUEUE_NODE *nodeToCSV(LIST_QUEUE_NODE *head) {
     char *filename = "Data.csv";
     FILE *fp = fopen(filename, "w");
     while (head != NULL) {
-        fprintf(fp, "%d;", head->customer.ID);
+        fprintf(fp, "%d;", head->customer.NIF);
         fprintf(fp, "%d;", head->customer.number);
         fprintf(fp, "%d;", head->customer.birthday.day);
         fprintf(fp, "%d;", head->customer.birthday.month);
@@ -153,7 +153,7 @@ LIST_QUEUE_NODE *apeendnodeToCSV(LIST_QUEUE_NODE *tail) {
     char *filename = "Data.csv";
     FILE *fp = fopen(filename, "a");
     while (tail != NULL) {
-        fprintf(fp, "%d;", tail->customer.ID);
+        fprintf(fp, "%d;", tail->customer.NIF);
         fprintf(fp, "%d;", tail->customer.number);
         fprintf(fp, "%d;", tail->customer.birthday.day);
         fprintf(fp, "%d;", tail->customer.birthday.month);
