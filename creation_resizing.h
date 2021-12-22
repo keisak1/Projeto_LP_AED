@@ -38,5 +38,6 @@ LIST_QUEUE_NODE * StoreCustomers();
 LIST_QUEUE_NODE *addCustomerHead(LIST_QUEUE_NODE *head, struct customer a);
 void printList(LIST_QUEUE_NODE *head);
 LIST_QUEUE_NODE * csvToNode(char *token, char* row);
+LIST_QUEUE_NODE * nodeToCSV(LIST_QUEUE_NODE *head);
 
 #endif //PROJETO_LP_AED_CREATION_RESIZING_H

@@ -34,7 +34,6 @@ LIST_QUEUE_NODE *StoreCustomers() {
     fclose(fp);
     return head;
 }
-
 LIST_QUEUE_NODE *addCustomerHead(LIST_QUEUE_NODE *head, struct customer a) {
     struct node *newNode = malloc(sizeof(LIST_QUEUE_NODE));
     a.address = malloc(sizeof(char) * 100);
@@ -63,7 +62,7 @@ LIST_QUEUE_NODE *addCustomerHead(LIST_QUEUE_NODE *head, struct customer a) {
     newNode->customer.birthday.year = a.birthday.year;
     newNode->next = head;
     head = newNode;
-
+    nodeToCSV(head);
     return head;
 }
 
@@ -103,4 +102,23 @@ LIST_QUEUE_NODE * csvToNode(char *token, char* row) {
     token = strtok(NULL, ";");
     newNode->customer.billingcost = atoi(token);
     return newNode;
+}
+
+LIST_QUEUE_NODE * nodeToCSV(LIST_QUEUE_NODE *head){
+    char *filename = "Data.csv";
+    filename=strcat(filename,".csv");
+    FILE *fp=fopen(filename,"w+");
+    while(head != NULL) {
+        fprintf(fp, "%d;", head->customer.ID);
+        fprintf(fp,"%d;", head->customer.number);
+        fprintf(fp,"%d;",head->customer.birthday.day);
+        fprintf(fp,"%d;",head->customer.birthday.month);
+        fprintf(fp,"%d;",head->customer.birthday.year);
+        fprintf(fp,"%d;",head->customer.registerdate.day);
+        fprintf(fp,"%d;",head->customer.registerdate.month);
+        fprintf(fp,"%d;",head->customer.registerdate.year);
+        fprintf(fp,"%s;",head->customer.address);
+        fprintf(fp,"%d;",head->customer.billingcost);
+        head = head->next;
+    }
 }
