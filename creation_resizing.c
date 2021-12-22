@@ -71,6 +71,55 @@ void printList(LIST_QUEUE_NODE *head) {
     }
 }
 
+LIST_QUEUE_NODE *deleteCustomer(LIST_QUEUE_NODE *head) {
+    struct node *temp;
+    int NIF = 0;
+    printf("Insert the customer NIF you want to delete:\n");
+    scanf("%d", &NIF);
+    if (head->customer.NIF == NIF) {
+        temp = head;
+        head = head->next;
+        free(temp);
+    } else {
+        struct node *current = head;
+        while (current->next != NULL) {
+            if (current->next->customer.NIF == NIF) {
+                temp = current->next;
+                //node will be disconnected from the linked list.
+                current->next = current->next->next;
+                free(temp);
+                printf("Customer deleted\n");
+                break;
+            } else
+                current = current->next;
+        }
+    }
+}
+
+void SearchNIF(LIST_QUEUE_NODE *head) {
+    struct node *temp = head;
+    int NIF = 0;
+    printf("Insert the customer NIF you want to search:\n");
+    scanf("%d", &NIF);
+    while (temp != NULL) {
+        if (temp->customer.NIF == NIF) {
+            printf("%d;", temp->customer.NIF);
+            printf("%d;", temp->customer.number);
+            printf("%d;", temp->customer.birthday.day);
+            printf("%d;", temp->customer.birthday.month);
+            printf("%d;", temp->customer.birthday.year);
+            printf("%d;", temp->customer.registerdate.day);
+            printf("%d;", temp->customer.registerdate.month);
+            printf("%d;", temp->customer.registerdate.year);
+            printf("%s;", temp->customer.address);
+            printf("%d;", temp->customer.billingcost);
+        }
+        temp = temp->next;
+    }
+    printf("NIF not existent");
+}
+
+
 void CreateAndResizeArrayTrips(LIST_QUEUE_NODE *head, int numberoftrips) {
     if (head->customer.trips == NULL) {
         head->customer.trips = malloc(sizeof(char) * numberoftrips);

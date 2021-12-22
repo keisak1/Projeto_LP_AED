@@ -10,5 +10,8 @@ int main() {
     head = addCustomerHead(head);
     addCustomerTail(head);
     printList(head);
+    deleteCustomer(head);
+    printList(head);
+    SearchNIF(head);
     return 0;
 }
