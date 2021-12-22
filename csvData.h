@@ -9,5 +9,5 @@
 LIST_QUEUE_NODE * csvToNode(char *token, char* row);
 LIST_QUEUE_NODE * nodeToCSV(LIST_QUEUE_NODE *head);
 LIST_QUEUE_NODE * appendnodeToCSV(LIST_QUEUE_NODE *tail);
-
+void insertCustomerData(LIST_QUEUE_NODE *newNode);
 #endif //PROJETO_LP_AED_CSVDATA_H

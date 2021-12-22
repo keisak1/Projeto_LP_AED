@@ -39,23 +39,7 @@ LIST_QUEUE_NODE *StoreCustomers() {
 LIST_QUEUE_NODE *addCustomerHead(LIST_QUEUE_NODE *head) {
     struct node *newNode = malloc(sizeof(LIST_QUEUE_NODE));
     newNode->customer.address = malloc(sizeof(char) * 100);
-    time_t t = time(NULL);
-    struct tm tm = *localtime(&t);
-    printf("Insert customer NIF:\n");
-    scanf("%d", &newNode->customer.NIF);
-    printf("Insert customer phone number:\n");
-    scanf("%d", &newNode->customer.number);
-    printf("Insert customer Birthday (Format: DAY-MONTH-YEAR):\n");
-    scanf("%d", &newNode->customer.birthday.day);
-    scanf("%d", &newNode->customer.birthday.month);
-    scanf("%d", &newNode->customer.birthday.year);
-    printf("Insert the address:\n");
-    scanf("%s", newNode->customer.address);
-    printf("Billing cost:");
-    scanf("%d", &newNode->customer.billingcost);
-    newNode->customer.registerdate.month = tm.tm_mon + 1;
-    newNode->customer.registerdate.day = tm.tm_mday;
-    newNode->customer.registerdate.year = tm.tm_year + +1900;
+    insertCustomerData(newNode);
     newNode->next = head;
     head = newNode;
     nodeToCSV(head);
@@ -65,23 +49,7 @@ LIST_QUEUE_NODE *addCustomerHead(LIST_QUEUE_NODE *head) {
 void addCustomerTail(LIST_QUEUE_NODE *tail) {
     struct node *newNode = malloc(sizeof(LIST_QUEUE_NODE));
     newNode->customer.address = malloc(sizeof(char) * 100);
-    time_t t = time(NULL);
-    struct tm tm = *localtime(&t);
-    printf("Insert customer NIF:\n");
-    scanf("%d", &newNode->customer.NIF);
-    printf("Insert customer phone number:\n");
-    scanf("%d", &newNode->customer.number);
-    printf("Insert customer Birthday (Format: DAY-MONTH-YEAR):\n");
-    scanf("%d", &newNode->customer.birthday.day);
-    scanf("%d", &newNode->customer.birthday.month);
-    scanf("%d", &newNode->customer.birthday.year);
-    printf("Insert the address:\n");
-    scanf("%s", newNode->customer.address);
-    printf("Billing cost:");
-    scanf("%d", &newNode->customer.billingcost);
-    newNode->customer.registerdate.month = tm.tm_mon + 1;
-    newNode->customer.registerdate.day = tm.tm_mday;
-    newNode->customer.registerdate.year = tm.tm_year + +1900;
+    insertCustomerData(newNode);
     struct node *lastNode = tail;
     while (lastNode->next != NULL) {
         lastNode = lastNode->next;
@@ -102,9 +70,6 @@ void printList(LIST_QUEUE_NODE *head) {
         currentNode = currentNode->next;
     }
 }
-
-
-
 
 void CreateAndResizeArrayTrips(LIST_QUEUE_NODE *head, int numberoftrips) {
     if (head->customer.trips == NULL) {
