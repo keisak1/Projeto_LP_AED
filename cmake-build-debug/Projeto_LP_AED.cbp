@@ -80,6 +80,12 @@
 		<Unit filename="C:/Users/Nuno/Desktop/Projeto_LP_AED/creation_resizing.h">
 			<Option target="Projeto_LP_AED"/>
 		</Unit>
+		<Unit filename="C:/Users/Nuno/Desktop/Projeto_LP_AED/csvData.c">
+			<Option target="Projeto_LP_AED"/>
+		</Unit>
+		<Unit filename="C:/Users/Nuno/Desktop/Projeto_LP_AED/csvData.h">
+			<Option target="Projeto_LP_AED"/>
+		</Unit>
 		<Unit filename="C:/Users/Nuno/Desktop/Projeto_LP_AED/main.c">
 			<Option target="Projeto_LP_AED"/>
 		</Unit>

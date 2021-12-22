@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
   "C:/Users/Nuno/Desktop/Projeto_LP_AED/creation_resizing.c" "C:/Users/Nuno/Desktop/Projeto_LP_AED/cmake-build-debug/CMakeFiles/Projeto_LP_AED.dir/creation_resizing.c.obj"
+  "C:/Users/Nuno/Desktop/Projeto_LP_AED/csvData.c" "C:/Users/Nuno/Desktop/Projeto_LP_AED/cmake-build-debug/CMakeFiles/Projeto_LP_AED.dir/csvData.c.obj"
   "C:/Users/Nuno/Desktop/Projeto_LP_AED/main.c" "C:/Users/Nuno/Desktop/Projeto_LP_AED/cmake-build-debug/CMakeFiles/Projeto_LP_AED.dir/main.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")

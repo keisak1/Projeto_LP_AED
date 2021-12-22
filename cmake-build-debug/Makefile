@@ -152,6 +152,30 @@ creation_resizing.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projeto_LP_AED.dir\build.make CMakeFiles/Projeto_LP_AED.dir/creation_resizing.c.s
 .PHONY : creation_resizing.c.s
 
+csvData.obj: csvData.c.obj
+.PHONY : csvData.obj
+
+# target to build an object file
+csvData.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projeto_LP_AED.dir\build.make CMakeFiles/Projeto_LP_AED.dir/csvData.c.obj
+.PHONY : csvData.c.obj
+
+csvData.i: csvData.c.i
+.PHONY : csvData.i
+
+# target to preprocess a source file
+csvData.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projeto_LP_AED.dir\build.make CMakeFiles/Projeto_LP_AED.dir/csvData.c.i
+.PHONY : csvData.c.i
+
+csvData.s: csvData.c.s
+.PHONY : csvData.s
+
+# target to generate assembly for a file
+csvData.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projeto_LP_AED.dir\build.make CMakeFiles/Projeto_LP_AED.dir/csvData.c.s
+.PHONY : csvData.c.s
+
 main.obj: main.c.obj
 .PHONY : main.obj
 
@@ -188,6 +212,9 @@ help:
 	@echo ... creation_resizing.obj
 	@echo ... creation_resizing.i
 	@echo ... creation_resizing.s
+	@echo ... csvData.obj
+	@echo ... csvData.i
+	@echo ... csvData.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

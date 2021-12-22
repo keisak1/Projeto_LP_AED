@@ -87,7 +87,7 @@ void addCustomerTail(LIST_QUEUE_NODE *tail) {
     }
     lastNode->next = newNode;
     lastNode->next->next = NULL;
-    apeendnodeToCSV(lastNode->next);
+    appendnodeToCSV(lastNode->next);
 }
 
 
@@ -145,6 +145,7 @@ LIST_QUEUE_NODE *nodeToCSV(LIST_QUEUE_NODE *head) {
         fprintf(fp, "%d;", head->customer.billingcost);
         fprintf(fp, "\n");
         head = head->next;
+
     }
     fclose(fp);
 }
