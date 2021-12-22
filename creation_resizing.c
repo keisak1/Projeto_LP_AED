@@ -127,3 +127,9 @@ void CreateAndResizeArrayTrips(LIST_QUEUE_NODE *head, int numberoftrips){
         head->customer.NumberOfTrips = numberoftrips;
     }
 }
+
+int searchNode(LIST_QUEUE_NODE *head, int key){
+    struct node * temp = head;
+    while(temp != NULL){
+        if(temp->customer.)
+    }
