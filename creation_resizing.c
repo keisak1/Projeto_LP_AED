@@ -61,6 +61,35 @@ LIST_QUEUE_NODE *addCustomerHead(LIST_QUEUE_NODE *head) {
     return head;
 }
 
+void addCustomerTail(LIST_QUEUE_NODE *head) {
+    struct node *newNode = malloc(sizeof(LIST_QUEUE_NODE));
+    newNode->customer.address = malloc(sizeof(char) * 100);
+    time_t t = time(NULL);
+    struct tm tm = *localtime(&t);
+    printf("Insert customer ID:\n");
+    scanf("%d", &newNode->customer.ID);
+    printf("Insert customer phone number:\n");
+    scanf("%d", &newNode->customer.number);
+    printf("Insert customer Birthday (Format: DAY-MONTH-YEAR):\n");
+    scanf("%d", &newNode->customer.birthday.day);
+    scanf("%d", &newNode->customer.birthday.month);
+    scanf("%d", &newNode->customer.birthday.year);
+    printf("Insert the address:\n");
+    scanf("%s", newNode->customer.address);
+    printf("Billing cost:");
+    scanf("%d", &newNode->customer.billingcost);
+    newNode->customer.registerdate.month = tm.tm_mon + 1;
+    newNode->customer.registerdate.day = tm.tm_mday ;
+    newNode->customer.registerdate.year = tm.tm_year+ + 1900;
+    struct node *lastNode = head;
+    while(lastNode->next!=NULL){
+        lastNode = lastNode->next;
+    }
+    lastNode->next = newNode;
+    nodeToCSV(head);
+}
+
+
 void printList(LIST_QUEUE_NODE *head) {
     LIST_QUEUE_NODE *currentNode = head;
     if (head == NULL) {

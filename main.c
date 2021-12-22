@@ -8,6 +8,7 @@ int main() {
     StoreCustomers();
     head = StoreCustomers();
     head = addCustomerHead(head);
+    addCustomerTail(head);
     printList(head);
     return 0;
 }
