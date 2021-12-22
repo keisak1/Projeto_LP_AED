@@ -1,0 +1,3 @@
+C:/Users/Daniel/OneDrive/Ambiente de Trabalho/Uni/LP & AED/Projeto_LP_AED-master/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Daniel/OneDrive/Ambiente de Trabalho/Uni/LP & AED/Projeto_LP_AED-master/cmake-build-debug/CMakeFiles/Projeto_LP_AED.dir
+C:/Users/Daniel/OneDrive/Ambiente de Trabalho/Uni/LP & AED/Projeto_LP_AED-master/cmake-build-debug/CMakeFiles/rebuild_cache.dir
