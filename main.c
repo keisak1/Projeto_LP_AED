@@ -13,5 +13,6 @@ int main() {
     deleteCustomer(head);
     printList(head);
     SearchNIF(head);
+    sortByNIF(head);
     return 0;
 }

@@ -5,6 +5,36 @@
 #include "csvData.h"
 
 
+void bubbleSort(LIST_QUEUE_NODE *start) {
+    int swapped, i;
+    LIST_QUEUE_NODE *ptr1;
+    LIST_QUEUE_NODE *ptr2 = NULL;
+    if (start == NULL) {
+        return;
+    }
+
+    do {
+        swapped = 0;
+        ptr1 = start;
+        while (ptr1->next != ptr2) {
+            if (ptr1->customer.NIF > ptr1->next->customer.NIF) {
+                swap(ptr1, ptr1->next);
+                swapped = 1;
+            }
+            ptr1 = ptr1->next;
+        }
+        ptr2 = ptr1;
+    }
+    while(swapped);
+}
+
+void swap(LIST_QUEUE_NODE *a, LIST_QUEUE_NODE *b) {
+    LIST_QUEUE_NODE *temp;
+    temp->customer = a->customer;
+    a->customer = b->customer;
+    b->customer = temp->customer;
+}
+
 LIST_QUEUE_NODE *nodeToCSV(LIST_QUEUE_NODE *head) {
     char *filename = "Data.csv";
     FILE *fp = fopen(filename, "w");
@@ -71,7 +101,7 @@ LIST_QUEUE_NODE *csvToNode(char *token, char *row) {
     return newNode;
 }
 
-void insertCustomerData(LIST_QUEUE_NODE *newNode){
+void insertCustomerData(LIST_QUEUE_NODE *newNode) {
     time_t t = time(NULL);
     struct tm tm = *localtime(&t);
     printf("Insert customer NIF:\n");

@@ -5,6 +5,12 @@
 #include "creation_resizing.h"
 #include "csvData.h"
 
+LIST_QUEUE_NODE *sortByNIF(LIST_QUEUE_NODE *head){
+    addCustomerHead(head);
+    bubbleSort(head);
+    printList(head);
+}
+
 LIST_QUEUE_NODE *StoreCustomers() {
     char *filename = "Data.csv";
     char *token;
@@ -88,7 +94,7 @@ LIST_QUEUE_NODE *deleteCustomer(LIST_QUEUE_NODE *head) {
                 //node will be disconnected from the linked list.
                 current->next = current->next->next;
                 free(temp);
-                printf("Customer deleted\n");
+                printf("\nCustomer deleted\n");
                 break;
             } else
                 current = current->next;
@@ -116,7 +122,7 @@ void SearchNIF(LIST_QUEUE_NODE *head) {
         }
         temp = temp->next;
     }
-    printf("NIF not existent");
+    printf("NIF does not exist.\n");
 }
 
 
