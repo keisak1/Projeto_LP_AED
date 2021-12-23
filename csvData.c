@@ -24,12 +24,11 @@ void bubbleSort(LIST_QUEUE_NODE *start) {
             ptr1 = ptr1->next;
         }
         ptr2 = ptr1;
-    }
-    while(swapped);
+    } while (swapped);
 }
 
 void swap(LIST_QUEUE_NODE *a, LIST_QUEUE_NODE *b) {
-    LIST_QUEUE_NODE *temp;
+    struct node *temp = malloc(sizeof(LIST_QUEUE_NODE));
     temp->customer = a->customer;
     a->customer = b->customer;
     b->customer = temp->customer;
@@ -104,19 +103,13 @@ LIST_QUEUE_NODE *csvToNode(char *token, char *row) {
 void insertCustomerData(LIST_QUEUE_NODE *newNode) {
     time_t t = time(NULL);
     struct tm tm = *localtime(&t);
-    printf("Insert customer NIF:\n");
-    scanf("%d", &newNode->customer.NIF);
-    printf("Insert customer phone number:\n");
-    scanf("%d", &newNode->customer.number);
-    printf("Insert customer Birthday (Format: DAY-MONTH-YEAR):\n");
-    scanf("%d", &newNode->customer.birthday.day);
-    scanf("%d", &newNode->customer.birthday.month);
-    scanf("%d", &newNode->customer.birthday.year);
-    printf("Insert the address:\n");
-    scanf("%s", newNode->customer.address);
-    printf("Billing cost:");
-    scanf("%d", &newNode->customer.billingcost);
+    printf("Insert customer NIF: %d\n", newNode->customer.NIF);
+    printf("Insert customer phone number: %d\n", newNode->customer.number);
+    printf("Insert customer Birthday (Format: DAY-MONTH-YEAR): %d/%d/%d\n", newNode->customer.birthday.day,
+           newNode->customer.birthday.month, newNode->customer.birthday.year);
+    printf("Insert the address: %s\n", newNode->customer.address);
+    printf("Billing cost: %d\n", newNode->customer.billingcost);
     newNode->customer.registerdate.month = tm.tm_mon + 1;
     newNode->customer.registerdate.day = tm.tm_mday;
-    newNode->customer.registerdate.year = tm.tm_year + +1900;
+    newNode->customer.registerdate.year = tm.tm_year + 1900;
 }

@@ -41,6 +41,7 @@ LIST_QUEUE_NODE *addCustomerHead(LIST_QUEUE_NODE *head);
 void addCustomerTail(LIST_QUEUE_NODE *tail);
 void printList(LIST_QUEUE_NODE *head);
 LIST_QUEUE_NODE *deleteCustomer(LIST_QUEUE_NODE *head);
+LIST_QUEUE_NODE *addCustomer(LIST_QUEUE_NODE *head);
 LIST_QUEUE_NODE *sortByNIF(LIST_QUEUE_NODE *head);
 void CreateAndResizeArrayTrips(LIST_QUEUE_NODE *head, int numberoftrips);
 void SearchNIF(LIST_QUEUE_NODE *head);

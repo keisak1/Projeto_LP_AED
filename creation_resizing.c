@@ -5,10 +5,12 @@
 #include "creation_resizing.h"
 #include "csvData.h"
 
-LIST_QUEUE_NODE *sortByNIF(LIST_QUEUE_NODE *head){
-    addCustomerHead(head);
+LIST_QUEUE_NODE *sortByNIF(LIST_QUEUE_NODE *head) {
+    printf("\n\nAdding sorted customer\n");
+    head = addCustomer(head);
     bubbleSort(head);
     printList(head);
+    nodeToCSV(head);
 }
 
 LIST_QUEUE_NODE *StoreCustomers() {
@@ -43,18 +45,51 @@ LIST_QUEUE_NODE *StoreCustomers() {
 }
 
 LIST_QUEUE_NODE *addCustomerHead(LIST_QUEUE_NODE *head) {
-    struct node *newNode = malloc(sizeof(LIST_QUEUE_NODE));
-    newNode->customer.address = malloc(sizeof(char) * 100);
-    insertCustomerData(newNode);
-    newNode->next = head;
-    head = newNode;
+    printf("\n\nAdding customer to head...\n");
+    LIST_QUEUE_NODE *test = malloc(sizeof(LIST_QUEUE_NODE));
+    test->customer.address = (char *) malloc(sizeof(char) * 100);
+    test->customer.NIF = 123456789;
+    test->customer.address = "Rua dos Camelos";
+    test->customer.birthday.day = 25;
+    test->customer.birthday.month = 04;
+    test->customer.birthday.year = 1999;
+    test->customer.billingcost = 40;
+    test->customer.number = 915989016;
+    insertCustomerData(test);
+    test->next = head;
+    head = test;
+    nodeToCSV(head);
+    return head;
+}
+
+LIST_QUEUE_NODE *addCustomer(LIST_QUEUE_NODE *head) {
+    LIST_QUEUE_NODE *test = malloc(sizeof(LIST_QUEUE_NODE));
+    test->customer.address = malloc(sizeof(char) * 100);
+    test->customer.NIF = 123456710;
+    test->customer.address = "Rua dos Camelitos";
+    test->customer.birthday.day = 25;
+    test->customer.birthday.month = 04;
+    test->customer.birthday.year = 1999;
+    test->customer.billingcost = 40;
+    test->customer.number = 915989016;
+    insertCustomerData(test);
+    test->next = head;
+    head = test;
     nodeToCSV(head);
     return head;
 }
 
 void addCustomerTail(LIST_QUEUE_NODE *tail) {
+    printf("\nAdding customer to tail...\n");
     struct node *newNode = malloc(sizeof(LIST_QUEUE_NODE));
     newNode->customer.address = malloc(sizeof(char) * 100);
+    newNode->customer.NIF = 987654321;
+    newNode->customer.address = "Rua dos Bitoques";
+    newNode->customer.birthday.day = 21;
+    newNode->customer.birthday.month = 04;
+    newNode->customer.birthday.year = 2010;
+    newNode->customer.billingcost = 20;
+    newNode->customer.number = 915989013;
     insertCustomerData(newNode);
     struct node *lastNode = tail;
     while (lastNode->next != NULL) {
@@ -69,8 +104,9 @@ void addCustomerTail(LIST_QUEUE_NODE *tail) {
 void printList(LIST_QUEUE_NODE *head) {
     LIST_QUEUE_NODE *currentNode = head;
     if (head == NULL) {
-        printf("Linked list is empty");
+        printf("\nLinked list is empty\n");
     }
+    printf("\nCustomer list\n");
     while (currentNode != NULL) {
         printf("%d ", currentNode->customer.NIF);
         currentNode = currentNode->next;
@@ -79,9 +115,8 @@ void printList(LIST_QUEUE_NODE *head) {
 
 LIST_QUEUE_NODE *deleteCustomer(LIST_QUEUE_NODE *head) {
     struct node *temp;
-    int NIF = 0;
-    printf("Insert the customer NIF you want to delete:\n");
-    scanf("%d", &NIF);
+    int NIF = 987654321;
+    printf("\nDeleting the following NIF: %d\n", NIF);
     if (head->customer.NIF == NIF) {
         temp = head;
         head = head->next;
@@ -104,9 +139,8 @@ LIST_QUEUE_NODE *deleteCustomer(LIST_QUEUE_NODE *head) {
 
 void SearchNIF(LIST_QUEUE_NODE *head) {
     struct node *temp = head;
-    int NIF = 0;
-    printf("Insert the customer NIF you want to search:\n");
-    scanf("%d", &NIF);
+    int NIF = 123456789;
+    printf("\nSearching the following NIF: %d\n", NIF);
     while (temp != NULL) {
         if (temp->customer.NIF == NIF) {
             printf("%d;", temp->customer.NIF);
@@ -122,7 +156,6 @@ void SearchNIF(LIST_QUEUE_NODE *head) {
         }
         temp = temp->next;
     }
-    printf("NIF does not exist.\n");
 }
 
 
