@@ -224,6 +224,30 @@ main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projeto_LP_AED.dir\build.make CMakeFiles/Projeto_LP_AED.dir/main.c.s
 .PHONY : main.c.s
 
+tripsandcities.obj: tripsandcities.c.obj
+.PHONY : tripsandcities.obj
+
+# target to build an object file
+tripsandcities.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projeto_LP_AED.dir\build.make CMakeFiles/Projeto_LP_AED.dir/tripsandcities.c.obj
+.PHONY : tripsandcities.c.obj
+
+tripsandcities.i: tripsandcities.c.i
+.PHONY : tripsandcities.i
+
+# target to preprocess a source file
+tripsandcities.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projeto_LP_AED.dir\build.make CMakeFiles/Projeto_LP_AED.dir/tripsandcities.c.i
+.PHONY : tripsandcities.c.i
+
+tripsandcities.s: tripsandcities.c.s
+.PHONY : tripsandcities.s
+
+# target to generate assembly for a file
+tripsandcities.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projeto_LP_AED.dir\build.make CMakeFiles/Projeto_LP_AED.dir/tripsandcities.c.s
+.PHONY : tripsandcities.c.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -245,6 +269,9 @@ help:
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... tripsandcities.obj
+	@echo ... tripsandcities.i
+	@echo ... tripsandcities.s
 .PHONY : help
 
 

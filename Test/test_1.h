@@ -5,6 +5,7 @@
 #ifndef PROJETO_LP_AED_TEST_1_H
 #define PROJETO_LP_AED_TEST_1_H
 #include "..\creation_resizing.h"
+#include "..\tripsandcities.h"
 LIST_QUEUE_NODE test_1();
 
 

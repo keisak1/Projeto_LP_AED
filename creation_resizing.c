@@ -158,13 +158,3 @@ void SearchNIF(LIST_QUEUE_NODE *head) {
     }
 }
 
-
-void CreateAndResizeArrayTrips(LIST_QUEUE_NODE *head, int numberoftrips) {
-    if (head->customer.trips == NULL) {
-        head->customer.trips = malloc(sizeof(char) * numberoftrips);
-        head->customer.NumberOfTrips = numberoftrips;
-    } else {
-        head->customer.trips = realloc(head->customer.trips, sizeof(char) * numberoftrips);
-        head->customer.NumberOfTrips = numberoftrips;
-    }
-}

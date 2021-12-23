@@ -12,8 +12,16 @@
 #include <string.h>
 #include <stdbool.h>
 #include <time.h>
+
 #define BUFFER_SIZE 1024
 
+
+typedef struct trips {
+    struct city {
+        int cities[0][0];
+    } city;
+    struct trips *next;
+} TRIPS;
 
 typedef struct customer {
     int NIF;
@@ -24,9 +32,9 @@ typedef struct customer {
     struct REGISTER {
         int day, month, year;
     } registerdate;
-    char* address;
+    char *address;
     int billingcost;
-    char* trips;
+    TRIPS trips;
     int NumberOfTrips;
 } CUSTOMER;
 
@@ -36,14 +44,20 @@ typedef struct node {
 } LIST_QUEUE_NODE;
 
 
-LIST_QUEUE_NODE * StoreCustomers();
+LIST_QUEUE_NODE *StoreCustomers();
+
 LIST_QUEUE_NODE *addCustomerHead(LIST_QUEUE_NODE *head);
+
 void addCustomerTail(LIST_QUEUE_NODE *tail);
+
 void printList(LIST_QUEUE_NODE *head);
+
 LIST_QUEUE_NODE *deleteCustomer(LIST_QUEUE_NODE *head);
+
 LIST_QUEUE_NODE *addCustomer(LIST_QUEUE_NODE *head);
+
 LIST_QUEUE_NODE *sortByNIF(LIST_QUEUE_NODE *head);
-void CreateAndResizeArrayTrips(LIST_QUEUE_NODE *head, int numberoftrips);
+
 void SearchNIF(LIST_QUEUE_NODE *head);
 
 #endif //PROJETO_LP_AED_CREATION_RESIZING_H

@@ -3,6 +3,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Projeto_LP_AED.dir/creation_resizing.c.obj"
   "CMakeFiles/Projeto_LP_AED.dir/csvData.c.obj"
   "CMakeFiles/Projeto_LP_AED.dir/main.c.obj"
+  "CMakeFiles/Projeto_LP_AED.dir/tripsandcities.c.obj"
   "Projeto_LP_AED.exe"
   "Projeto_LP_AED.exe.manifest"
   "Projeto_LP_AED.pdb"

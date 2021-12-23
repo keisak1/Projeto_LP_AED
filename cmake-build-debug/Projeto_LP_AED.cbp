@@ -95,6 +95,12 @@
 		<Unit filename="C:/Users/Nuno/Desktop/Projeto_LP_AED/main.c">
 			<Option target="Projeto_LP_AED"/>
 		</Unit>
+		<Unit filename="C:/Users/Nuno/Desktop/Projeto_LP_AED/tripsandcities.c">
+			<Option target="Projeto_LP_AED"/>
+		</Unit>
+		<Unit filename="C:/Users/Nuno/Desktop/Projeto_LP_AED/tripsandcities.h">
+			<Option target="Projeto_LP_AED"/>
+		</Unit>
 		<Unit filename="C:/Users/Nuno/Desktop/Projeto_LP_AED/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
