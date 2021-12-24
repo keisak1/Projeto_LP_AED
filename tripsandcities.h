@@ -5,6 +5,7 @@
 #ifndef PROJETO_LP_AED_TRIPSANDCITIES_H
 #define PROJETO_LP_AED_TRIPSANDCITIES_H
 #include "creation_resizing.h"
+#include "csvData.h"
 
 
 void editTrips(LIST_QUEUE_NODE *user);
