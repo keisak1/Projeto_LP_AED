@@ -14,14 +14,16 @@
 #include <time.h>
 
 #define BUFFER_SIZE 1024
+FILE *fp;
 
-typedef  struct city{
+typedef struct city {
     int ID;
     char *name;
+    float x, y;
     struct poi {
         int beaches, museums, parks;
     } PoI;
-}CITY;
+} CITY;
 
 typedef struct cityNode {
     CITY city;
@@ -29,7 +31,8 @@ typedef struct cityNode {
 } CITYNODE;
 
 typedef struct trips {
-   int *citiesvisited;
+    int arraySize;
+    int *citiesvisited;
 } TRIPS;
 
 

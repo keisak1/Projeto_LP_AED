@@ -8,13 +8,13 @@
 LIST_QUEUE_NODE test_1() {
     LIST_QUEUE_NODE *head = NULL;
     head = StoreCustomers();
-    addCustomerHead(head);
+    head = addCustomerHead(head);
     addCustomerTail(head);
     printList(head);
     deleteCustomer(head);
     printList(head);
     SearchNIF(head);
     sortByNIF(head);
-    CreateAndResizeArrayTrips(head);
+    //CreateAndResizeArrayTrips(head);
 }
 

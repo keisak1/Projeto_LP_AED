@@ -36,8 +36,9 @@ void swap(LIST_QUEUE_NODE *a, LIST_QUEUE_NODE *b) {
 
 LIST_QUEUE_NODE *nodeToCSV(LIST_QUEUE_NODE *head) {
     char *filename = "Data.csv";
-    FILE *fp = fopen(filename, "w");
+    fp = fopen(filename, "w");
     while (head != NULL) {
+        int length = head->customer.trips.arraySize;
         fprintf(fp, "%d;", head->customer.NIF);
         fprintf(fp, "%d;", head->customer.number);
         fprintf(fp, "%d;", head->customer.birthday.day);
@@ -48,6 +49,10 @@ LIST_QUEUE_NODE *nodeToCSV(LIST_QUEUE_NODE *head) {
         fprintf(fp, "%d;", head->customer.registerdate.year);
         fprintf(fp, "%s;", head->customer.address);
         fprintf(fp, "%d;", head->customer.billingcost);
+        for (int i = 0; i < length; ++i) {
+            fprintf(fp, "%d", head->customer.trips.citiesvisited[i]);
+        }
+        fprintf(fp, ";");
         fprintf(fp, "\n");
         head = head->next;
     }
@@ -56,8 +61,9 @@ LIST_QUEUE_NODE *nodeToCSV(LIST_QUEUE_NODE *head) {
 
 LIST_QUEUE_NODE *appendnodeToCSV(LIST_QUEUE_NODE *tail) {
     char *filename = "Data.csv";
-    FILE *fp = fopen(filename, "a");
+    fp = fopen(filename, "a");
     while (tail != NULL) {
+        int length = tail->customer.trips.arraySize;
         fprintf(fp, "%d;", tail->customer.NIF);
         fprintf(fp, "%d;", tail->customer.number);
         fprintf(fp, "%d;", tail->customer.birthday.day);
@@ -68,6 +74,10 @@ LIST_QUEUE_NODE *appendnodeToCSV(LIST_QUEUE_NODE *tail) {
         fprintf(fp, "%d;", tail->customer.registerdate.year);
         fprintf(fp, "%s;", tail->customer.address);
         fprintf(fp, "%d;", tail->customer.billingcost);
+        for (int i = 0; i < length; ++i) {
+            fprintf(fp, "%d", tail->customer.trips.citiesvisited[i]);
+        }
+        fprintf(fp, ";");
         fprintf(fp, "\n");
         tail = tail->next;
     }
@@ -76,7 +86,6 @@ LIST_QUEUE_NODE *appendnodeToCSV(LIST_QUEUE_NODE *tail) {
 
 LIST_QUEUE_NODE *csvToNode(char *token, char *row) {
     struct node *newNode = (struct node *) malloc(sizeof(LIST_QUEUE_NODE));
-    newNode->customer.address = malloc(sizeof(char) * 100);
     token = strtok(row, ";");
     newNode->customer.NIF = atoi(token);
     token = strtok(NULL, ";");
@@ -94,21 +103,36 @@ LIST_QUEUE_NODE *csvToNode(char *token, char *row) {
     token = strtok(NULL, ";");
     newNode->customer.registerdate.year = atoi(token);
     token = strtok(NULL, ";");
+    newNode->customer.address = (char *) malloc(sizeof(char) * strlen(token));
     newNode->customer.address = token;
     token = strtok(NULL, ";");
     newNode->customer.billingcost = atoi(token);
+    token = strtok(NULL, ";");
+    newNode->customer.trips.citiesvisited = malloc(sizeof(int) * strlen(token));
+    newNode->customer.trips.arraySize = strlen(token);
+    for (int i = 0; i < strlen(token); ++i) {
+        char a = token[i];
+        int temp = atoi(&a);
+        newNode->customer.trips.citiesvisited[i] = temp;
+    }
     return newNode;
 }
 
 void insertCustomerData(LIST_QUEUE_NODE *newNode) {
     time_t t = time(NULL);
     struct tm tm = *localtime(&t);
+    int length = newNode->customer.trips.arraySize;
     printf("Insert customer NIF: %d\n", newNode->customer.NIF);
     printf("Insert customer phone number: %d\n", newNode->customer.number);
     printf("Insert customer Birthday (Format: DAY-MONTH-YEAR): %d/%d/%d\n", newNode->customer.birthday.day,
            newNode->customer.birthday.month, newNode->customer.birthday.year);
     printf("Insert the address: %s\n", newNode->customer.address);
     printf("Billing cost: %d\n", newNode->customer.billingcost);
+    printf("Cities visited");
+    for (int i = 0; i < length; ++i) {
+        printf(" %d ", newNode->customer.trips.citiesvisited[i]);
+    }
+    printf("\n");
     newNode->customer.registerdate.month = tm.tm_mon + 1;
     newNode->customer.registerdate.day = tm.tm_mday;
     newNode->customer.registerdate.year = tm.tm_year + 1900;
