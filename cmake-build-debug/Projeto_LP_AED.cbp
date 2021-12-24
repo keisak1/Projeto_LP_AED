@@ -74,12 +74,6 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="C:/Users/Nuno/Desktop/Projeto_LP_AED/Test/test_1.c">
-			<Option target="Projeto_LP_AED"/>
-		</Unit>
-		<Unit filename="C:/Users/Nuno/Desktop/Projeto_LP_AED/Test/test_1.h">
-			<Option target="Projeto_LP_AED"/>
-		</Unit>
 		<Unit filename="C:/Users/Nuno/Desktop/Projeto_LP_AED/creation_resizing.c">
 			<Option target="Projeto_LP_AED"/>
 		</Unit>
@@ -93,6 +87,12 @@
 			<Option target="Projeto_LP_AED"/>
 		</Unit>
 		<Unit filename="C:/Users/Nuno/Desktop/Projeto_LP_AED/main.c">
+			<Option target="Projeto_LP_AED"/>
+		</Unit>
+		<Unit filename="C:/Users/Nuno/Desktop/Projeto_LP_AED/test_1.c">
+			<Option target="Projeto_LP_AED"/>
+		</Unit>
+		<Unit filename="C:/Users/Nuno/Desktop/Projeto_LP_AED/test_1.h">
 			<Option target="Projeto_LP_AED"/>
 		</Unit>
 		<Unit filename="C:/Users/Nuno/Desktop/Projeto_LP_AED/tripsandcities.c">

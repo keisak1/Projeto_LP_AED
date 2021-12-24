@@ -128,30 +128,6 @@ Projeto_LP_AED/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projeto_LP_AED.dir\build.make CMakeFiles/Projeto_LP_AED.dir/build
 .PHONY : Projeto_LP_AED/fast
 
-Test/test_1.obj: Test/test_1.c.obj
-.PHONY : Test/test_1.obj
-
-# target to build an object file
-Test/test_1.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projeto_LP_AED.dir\build.make CMakeFiles/Projeto_LP_AED.dir/Test/test_1.c.obj
-.PHONY : Test/test_1.c.obj
-
-Test/test_1.i: Test/test_1.c.i
-.PHONY : Test/test_1.i
-
-# target to preprocess a source file
-Test/test_1.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projeto_LP_AED.dir\build.make CMakeFiles/Projeto_LP_AED.dir/Test/test_1.c.i
-.PHONY : Test/test_1.c.i
-
-Test/test_1.s: Test/test_1.c.s
-.PHONY : Test/test_1.s
-
-# target to generate assembly for a file
-Test/test_1.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projeto_LP_AED.dir\build.make CMakeFiles/Projeto_LP_AED.dir/Test/test_1.c.s
-.PHONY : Test/test_1.c.s
-
 creation_resizing.obj: creation_resizing.c.obj
 .PHONY : creation_resizing.obj
 
@@ -224,6 +200,30 @@ main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projeto_LP_AED.dir\build.make CMakeFiles/Projeto_LP_AED.dir/main.c.s
 .PHONY : main.c.s
 
+test_1.obj: test_1.c.obj
+.PHONY : test_1.obj
+
+# target to build an object file
+test_1.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projeto_LP_AED.dir\build.make CMakeFiles/Projeto_LP_AED.dir/test_1.c.obj
+.PHONY : test_1.c.obj
+
+test_1.i: test_1.c.i
+.PHONY : test_1.i
+
+# target to preprocess a source file
+test_1.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projeto_LP_AED.dir\build.make CMakeFiles/Projeto_LP_AED.dir/test_1.c.i
+.PHONY : test_1.c.i
+
+test_1.s: test_1.c.s
+.PHONY : test_1.s
+
+# target to generate assembly for a file
+test_1.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projeto_LP_AED.dir\build.make CMakeFiles/Projeto_LP_AED.dir/test_1.c.s
+.PHONY : test_1.c.s
+
 tripsandcities.obj: tripsandcities.c.obj
 .PHONY : tripsandcities.obj
 
@@ -257,9 +257,6 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... Projeto_LP_AED
-	@echo ... Test/test_1.obj
-	@echo ... Test/test_1.i
-	@echo ... Test/test_1.s
 	@echo ... creation_resizing.obj
 	@echo ... creation_resizing.i
 	@echo ... creation_resizing.s
@@ -269,6 +266,9 @@ help:
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... test_1.obj
+	@echo ... test_1.i
+	@echo ... test_1.s
 	@echo ... tripsandcities.obj
 	@echo ... tripsandcities.i
 	@echo ... tripsandcities.s

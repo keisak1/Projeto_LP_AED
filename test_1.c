@@ -17,5 +17,6 @@ LIST_QUEUE_NODE test_1() {
     sortByNIF(head);
     editTrips(head);
     insertTrips(head);
+    removeTrips(head);
 }
 

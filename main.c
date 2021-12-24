@@ -1,5 +1,4 @@
-#include <stdio.h>
-#include "Test/test_1.h"
+#include "test_1.h"
 
 //LER FICHEIROS DE TEXTO E COLOCAR NOS PARAMETROS :))
 

@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/Projeto_LP_AED.dir/Test/test_1.c.obj"
   "CMakeFiles/Projeto_LP_AED.dir/creation_resizing.c.obj"
   "CMakeFiles/Projeto_LP_AED.dir/csvData.c.obj"
   "CMakeFiles/Projeto_LP_AED.dir/main.c.obj"
+  "CMakeFiles/Projeto_LP_AED.dir/test_1.c.obj"
   "CMakeFiles/Projeto_LP_AED.dir/tripsandcities.c.obj"
   "Projeto_LP_AED.exe"
   "Projeto_LP_AED.exe.manifest"

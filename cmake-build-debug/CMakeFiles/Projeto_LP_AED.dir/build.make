@@ -78,9 +78,22 @@ CMakeFiles/Projeto_LP_AED.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Projeto_LP_AED.dir/main.c.s"
 	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\Nuno\Desktop\Projeto_LP_AED\main.c -o CMakeFiles\Projeto_LP_AED.dir\main.c.s
 
+CMakeFiles/Projeto_LP_AED.dir/test_1.c.obj: CMakeFiles/Projeto_LP_AED.dir/flags.make
+CMakeFiles/Projeto_LP_AED.dir/test_1.c.obj: ../test_1.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Nuno\Desktop\Projeto_LP_AED\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Projeto_LP_AED.dir/test_1.c.obj"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\Projeto_LP_AED.dir\test_1.c.obj -c C:\Users\Nuno\Desktop\Projeto_LP_AED\test_1.c
+
+CMakeFiles/Projeto_LP_AED.dir/test_1.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Projeto_LP_AED.dir/test_1.c.i"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\Nuno\Desktop\Projeto_LP_AED\test_1.c > CMakeFiles\Projeto_LP_AED.dir\test_1.c.i
+
+CMakeFiles/Projeto_LP_AED.dir/test_1.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Projeto_LP_AED.dir/test_1.c.s"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\Nuno\Desktop\Projeto_LP_AED\test_1.c -o CMakeFiles\Projeto_LP_AED.dir\test_1.c.s
+
 CMakeFiles/Projeto_LP_AED.dir/creation_resizing.c.obj: CMakeFiles/Projeto_LP_AED.dir/flags.make
 CMakeFiles/Projeto_LP_AED.dir/creation_resizing.c.obj: ../creation_resizing.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Nuno\Desktop\Projeto_LP_AED\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Projeto_LP_AED.dir/creation_resizing.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Nuno\Desktop\Projeto_LP_AED\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Projeto_LP_AED.dir/creation_resizing.c.obj"
 	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\Projeto_LP_AED.dir\creation_resizing.c.obj -c C:\Users\Nuno\Desktop\Projeto_LP_AED\creation_resizing.c
 
 CMakeFiles/Projeto_LP_AED.dir/creation_resizing.c.i: cmake_force
@@ -93,7 +106,7 @@ CMakeFiles/Projeto_LP_AED.dir/creation_resizing.c.s: cmake_force
 
 CMakeFiles/Projeto_LP_AED.dir/csvData.c.obj: CMakeFiles/Projeto_LP_AED.dir/flags.make
 CMakeFiles/Projeto_LP_AED.dir/csvData.c.obj: ../csvData.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Nuno\Desktop\Projeto_LP_AED\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Projeto_LP_AED.dir/csvData.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Nuno\Desktop\Projeto_LP_AED\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/Projeto_LP_AED.dir/csvData.c.obj"
 	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\Projeto_LP_AED.dir\csvData.c.obj -c C:\Users\Nuno\Desktop\Projeto_LP_AED\csvData.c
 
 CMakeFiles/Projeto_LP_AED.dir/csvData.c.i: cmake_force
@@ -103,19 +116,6 @@ CMakeFiles/Projeto_LP_AED.dir/csvData.c.i: cmake_force
 CMakeFiles/Projeto_LP_AED.dir/csvData.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Projeto_LP_AED.dir/csvData.c.s"
 	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\Nuno\Desktop\Projeto_LP_AED\csvData.c -o CMakeFiles\Projeto_LP_AED.dir\csvData.c.s
-
-CMakeFiles/Projeto_LP_AED.dir/Test/test_1.c.obj: CMakeFiles/Projeto_LP_AED.dir/flags.make
-CMakeFiles/Projeto_LP_AED.dir/Test/test_1.c.obj: ../Test/test_1.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Nuno\Desktop\Projeto_LP_AED\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/Projeto_LP_AED.dir/Test/test_1.c.obj"
-	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\Projeto_LP_AED.dir\Test\test_1.c.obj -c C:\Users\Nuno\Desktop\Projeto_LP_AED\Test\test_1.c
-
-CMakeFiles/Projeto_LP_AED.dir/Test/test_1.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Projeto_LP_AED.dir/Test/test_1.c.i"
-	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\Nuno\Desktop\Projeto_LP_AED\Test\test_1.c > CMakeFiles\Projeto_LP_AED.dir\Test\test_1.c.i
-
-CMakeFiles/Projeto_LP_AED.dir/Test/test_1.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Projeto_LP_AED.dir/Test/test_1.c.s"
-	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\Nuno\Desktop\Projeto_LP_AED\Test\test_1.c -o CMakeFiles\Projeto_LP_AED.dir\Test\test_1.c.s
 
 CMakeFiles/Projeto_LP_AED.dir/tripsandcities.c.obj: CMakeFiles/Projeto_LP_AED.dir/flags.make
 CMakeFiles/Projeto_LP_AED.dir/tripsandcities.c.obj: ../tripsandcities.c
@@ -133,18 +133,18 @@ CMakeFiles/Projeto_LP_AED.dir/tripsandcities.c.s: cmake_force
 # Object files for target Projeto_LP_AED
 Projeto_LP_AED_OBJECTS = \
 "CMakeFiles/Projeto_LP_AED.dir/main.c.obj" \
+"CMakeFiles/Projeto_LP_AED.dir/test_1.c.obj" \
 "CMakeFiles/Projeto_LP_AED.dir/creation_resizing.c.obj" \
 "CMakeFiles/Projeto_LP_AED.dir/csvData.c.obj" \
-"CMakeFiles/Projeto_LP_AED.dir/Test/test_1.c.obj" \
 "CMakeFiles/Projeto_LP_AED.dir/tripsandcities.c.obj"
 
 # External object files for target Projeto_LP_AED
 Projeto_LP_AED_EXTERNAL_OBJECTS =
 
 Projeto_LP_AED.exe: CMakeFiles/Projeto_LP_AED.dir/main.c.obj
+Projeto_LP_AED.exe: CMakeFiles/Projeto_LP_AED.dir/test_1.c.obj
 Projeto_LP_AED.exe: CMakeFiles/Projeto_LP_AED.dir/creation_resizing.c.obj
 Projeto_LP_AED.exe: CMakeFiles/Projeto_LP_AED.dir/csvData.c.obj
-Projeto_LP_AED.exe: CMakeFiles/Projeto_LP_AED.dir/Test/test_1.c.obj
 Projeto_LP_AED.exe: CMakeFiles/Projeto_LP_AED.dir/tripsandcities.c.obj
 Projeto_LP_AED.exe: CMakeFiles/Projeto_LP_AED.dir/build.make
 Projeto_LP_AED.exe: CMakeFiles/Projeto_LP_AED.dir/linklibs.rsp
