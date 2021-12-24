@@ -15,13 +15,23 @@
 
 #define BUFFER_SIZE 1024
 
+typedef  struct city{
+    int ID;
+    char *name;
+    struct poi {
+        int beaches, museums, parks;
+    } PoI;
+}CITY;
+
+typedef struct cityNode {
+    CITY city;
+    struct city *nextcity;
+} CITYNODE;
 
 typedef struct trips {
-    struct city {
-        int cities[0][0];
-    } city;
-    struct trips *next;
+   int *citiesvisited;
 } TRIPS;
+
 
 typedef struct customer {
     int NIF;
@@ -35,7 +45,6 @@ typedef struct customer {
     char *address;
     int billingcost;
     TRIPS trips;
-    int NumberOfTrips;
 } CUSTOMER;
 
 typedef struct node {

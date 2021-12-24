@@ -5,12 +5,11 @@
 #include "tripsandcities.h"
 
 
-/*void CreateAndResizeArrayTrips(LIST_QUEUE_NODE *head) {
-    head->customer.trips.city.cities = (int) calloc((10 * 10) ,sizeof(int) );
-
-
-}*/
+void CreateArrayTrips(LIST_QUEUE_NODE *head) {
+    head->customer.trips.citiesvisited = malloc(sizeof(int)*10);
+}
 
 void searchCityByName(LIST_QUEUE_NODE *head){
+
 
 }
