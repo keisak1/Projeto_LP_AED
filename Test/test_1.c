@@ -15,6 +15,7 @@ LIST_QUEUE_NODE test_1() {
     printList(head);
     SearchNIF(head);
     sortByNIF(head);
-    //CreateAndResizeArrayTrips(head);
+    editTrips(head);
+    insertTrips(head);
 }
 

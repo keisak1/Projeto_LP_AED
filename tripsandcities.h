@@ -6,7 +6,9 @@
 #define PROJETO_LP_AED_TRIPSANDCITIES_H
 #include "creation_resizing.h"
 
-void CreateArrayTrips(LIST_QUEUE_NODE *head);
+
+void editTrips(LIST_QUEUE_NODE *user);
 void searchCityByName(LIST_QUEUE_NODE *head);
+void insertTrips(LIST_QUEUE_NODE *head);
 
 #endif //PROJETO_LP_AED_TRIPSANDCITIES_H

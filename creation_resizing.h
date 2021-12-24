@@ -12,6 +12,7 @@
 #include <string.h>
 #include <stdbool.h>
 #include <time.h>
+#include "csvData.h"
 
 #define BUFFER_SIZE 1024
 FILE *fp;
@@ -54,6 +55,7 @@ typedef struct node {
     CUSTOMER customer;
     struct node *next;
 } LIST_QUEUE_NODE;
+
 
 
 LIST_QUEUE_NODE *StoreCustomers();

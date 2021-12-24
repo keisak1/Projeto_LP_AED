@@ -3,7 +3,6 @@
 //
 
 #include "creation_resizing.h"
-#include "csvData.h"
 
 LIST_QUEUE_NODE *sortByNIF(LIST_QUEUE_NODE *head) {
     printf("\n\nAdding sorted customer\n");
@@ -24,6 +23,7 @@ LIST_QUEUE_NODE *StoreCustomers() {
     struct node *newNode;
     struct node *prevNode;
     LIST_QUEUE_NODE *head;
+
 
     // For first iteration
     fgets(row, BUFFER_SIZE, fp);

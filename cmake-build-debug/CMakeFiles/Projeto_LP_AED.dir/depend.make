@@ -5,6 +5,7 @@ CMakeFiles/Projeto_LP_AED.dir/Test/test_1.c.obj: \
  ../Test/test_1.c \
  ../Test/test_1.h \
  ../creation_resizing.h \
+ ../csvData.h \
  ../libs_src/lib_stats.h \
  ../libs_src/lib_util.h \
  ../tripsandcities.h
@@ -23,12 +24,14 @@ CMakeFiles/Projeto_LP_AED.dir/csvData.c.obj: \
 CMakeFiles/Projeto_LP_AED.dir/main.c.obj: \
  ../Test/test_1.h \
  ../creation_resizing.h \
+ ../csvData.h \
  ../libs_src/lib_stats.h \
  ../libs_src/lib_util.h \
  ../main.c \
  ../tripsandcities.h
 CMakeFiles/Projeto_LP_AED.dir/tripsandcities.c.obj: \
  ../creation_resizing.h \
+ ../csvData.h \
  ../libs_src/lib_stats.h \
  ../libs_src/lib_util.h \
  ../tripsandcities.c \
