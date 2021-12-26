@@ -19,6 +19,7 @@ FILE *fp;
 typedef struct city {
     int ID;
     char *name;
+    char *description;
     float x, y;
     struct poi {
         int beaches, museums, parks;

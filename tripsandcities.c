@@ -53,7 +53,7 @@ void removeTrips(LIST_QUEUE_NODE *head) {
 void citiesToBin() {
     char *filename = "City.bin";
     FILE *fptr = fopen(filename, "wb");
-    char *text = "1,Braga,3.0,1.0,3,4,2,\n2,Porto,1.0,2.0,4,2,1,\n3,Aveiro,0.0,1.0,6,1,2,\n4,Guimaraes,2.0,0.0,0,2,4,\n5,Lisboa,5.0,0.1,3,4,5,\n6,Albufeira,3.0,5.0,6,1,1,\n7,Coimbra,0.0,5.0,6,6,6,\n8,Guarda,6.0,5.0,4,1,4,\n9,Chaves,7.0,4.0,2,3,4,\n10,Leiria,8.0,4.0,4,1,3,";
+    char *text = "1,Braga,Belas praias,3.0,1.0,3,4,2,\n2,Porto,Belas praias,1.0,2.0,4,2,1,\n3,Aveiro,Belas praias,0.0,1.0,6,1,2,\n4,Guimaraes,Belas praias,2.0,0.0,0,2,4,\n5,Lisboa,Belas praias,5.0,0.1,3,4,5,\n6,Albufeira,Belas praias,3.0,5.0,6,1,1,\n7,Coimbra,Belas praias,0.0,5.0,6,6,6,\n8,Guarda,Belas praias,6.0,5.0,4,1,4,\n9,Chaves,Belas praias,7.0,4.0,2,3,4,\n10,Leiria,Belas praias,8.0,4.0,4,1,3,";
     fwrite(text, strlen(text) + 1, 1, fptr);
     fclose(fptr);
 }
@@ -95,6 +95,9 @@ CITYNODE *binToNode(char *token, char *row) {
     token = strtok(row, ",");
     newNode->city.name = (char *) malloc(sizeof(char) * strlen(token));
     newNode->city.name = token;
+    token = strtok(row, ",");
+    newNode->city.description = (char *) malloc(sizeof(char) * strlen(token));
+    newNode->city.description = token;
     token = strtok(row, ",");
     newNode->city.x = atof(token);
     token = strtok(row, ",");
