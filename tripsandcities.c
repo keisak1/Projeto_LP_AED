@@ -62,39 +62,39 @@ CITYNODE *updateToBin(CITYNODE *head) {
     char *filename = "City.bin";
     FILE *fptr = fopen(filename, "wb");
     while (head != NULL) {
-        char* comma = ",";
-        char* nextline ="\n";
+        char *comma = ",";
+        char *nextline = "\n";
         int ID = head->city.ID;
         fwrite(&ID, sizeof(ID), 1, fptr);
-        fwrite(comma, strlen(comma),1,fptr);
+        fwrite(comma, strlen(comma), 1, fptr);
         char *name = head->city.name;
-        fwrite(name, strlen(name),1,fptr);
-        fwrite(comma, strlen(comma),1,fptr);
+        fwrite(name, strlen(name), 1, fptr);
+        fwrite(comma, strlen(comma), 1, fptr);
         char *description = head->city.description;
-        fwrite(description, strlen(description),1,fptr);
-        fwrite(comma, strlen(comma),1,fptr);
+        fwrite(description, strlen(description), 1, fptr);
+        fwrite(comma, strlen(comma), 1, fptr);
 
         float x = head->city.x;
-        fwrite(&x,sizeof(x),1,fptr);
-        fwrite(comma, strlen(comma),1,fptr);
+        fwrite(&x, sizeof(x), 1, fptr);
+        fwrite(comma, strlen(comma), 1, fptr);
 
 
         float y = head->city.y;
-        fwrite(&y,sizeof(y),1,fptr);
-        fwrite(comma, strlen(comma),1,fptr);
+        fwrite(&y, sizeof(y), 1, fptr);
+        fwrite(comma, strlen(comma), 1, fptr);
 
         int beaches = head->city.PoI.beaches;
-        fwrite(&beaches,sizeof(beaches),1,fptr);
-        fwrite(comma, strlen(comma),1,fptr);
+        fwrite(&beaches, sizeof(beaches), 1, fptr);
+        fwrite(comma, strlen(comma), 1, fptr);
 
         int museums = head->city.PoI.museums;
-        fwrite(&museums,sizeof(museums),1,fptr);
-        fwrite(comma, strlen(comma),1,fptr);
+        fwrite(&museums, sizeof(museums), 1, fptr);
+        fwrite(comma, strlen(comma), 1, fptr);
 
         int parks = head->city.PoI.parks;
-        fwrite(&parks,sizeof(parks),1,fptr);
-        fwrite(comma, strlen(comma),1,fptr);
-        fwrite(nextline, strlen(nextline),1,fptr);
+        fwrite(&parks, sizeof(parks), 1, fptr);
+        fwrite(comma, strlen(comma), 1, fptr);
+        fwrite(nextline, strlen(nextline), 1, fptr);
         head = head->nextcity;
     }
 }
@@ -174,6 +174,55 @@ void searchCityByID(CITYNODE *head) {
     }
 }
 
-void searchCityByName(LIST_QUEUE_NODE *head) {
-
+void editCityInfo(CITYNODE *user) {
+    printf("\nEditing city description:\n");
+    printf("%s", user->city.description);
+    printf("\nEdited to: ");
+    user->city.description = "Perfect park for picnics";
+    printf("%s", user->city.description);
+    updateToBin(user);
 }
+void insertPoI(CITYNODE *head){
+    printf("\n\nResizing and inserting new points of interest");
+    printf("\nBefore:\n");
+    printf("Number of beaches: %d", head->city.PoI.beaches);
+    printf("Number of beaches: %d", head->city.PoI.museums);
+    printf("Number of beaches: %d", head->city.PoI.parks);
+    head->city.PoI.beaches++;
+    head->city.PoI.museums++;
+    head->city.PoI.parks++;
+    printf("\n After: \n");
+    printf("Number of beaches: %d", head->city.PoI.beaches);
+    printf("Number of beaches: %d", head->city.PoI.museums);
+    printf("Number of beaches: %d", head->city.PoI.parks);
+    updateToBin(head);
+}
+void removePoI(CITYNODE *head){
+    printf("\n\nRemoving points of interest");
+    printf("\nBefore:\n");
+    printf("Number of beaches: %d", head->city.PoI.beaches);
+    printf("Number of beaches: %d", head->city.PoI.museums);
+    printf("Number of beaches: %d", head->city.PoI.parks);
+    head->city.PoI.beaches--;
+    head->city.PoI.museums--;
+    head->city.PoI.parks--;
+    printf("\n After: \n");
+    printf("Number of beaches: %d", head->city.PoI.beaches);
+    printf("Number of beaches: %d", head->city.PoI.museums);
+    printf("Number of beaches: %d", head->city.PoI.parks);
+    updateToBin(head);
+}
+void searchPoI(CITYNODE *head){
+    struct cityNode *temp = (struct cityNode *) head;
+    int ID = 1;
+    printf("\n\nSearching the following city ID: %d", ID);
+    while (temp != NULL) {
+        if (temp->city.ID == ID) {
+            printf("Number of beaches: %d\n", temp->city.PoI.beaches);
+            printf("Number of museums: %d\n", temp->city.PoI.museums);
+            printf("Number of parks: %d\n", temp->city.PoI.parks);
+        }
+        temp = temp->nextcity;
+    }
+}
+

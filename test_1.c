@@ -22,5 +22,9 @@ LIST_QUEUE_NODE test_1() {
     citiesToBin();
     cityHead = storeCity();
     searchCityByID(cityHead);
+    editCityInfo(cityHead);
+    insertPoI(cityHead);
+    removePoI(cityHead);
+    searchPoI(cityHead);
 }
 

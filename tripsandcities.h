@@ -17,5 +17,9 @@ CITYNODE *storeCity();
 CITYNODE *binToNode(char *token, char *row);
 CITYNODE *updateToBin(CITYNODE *head);
 void searchCityByID(CITYNODE *head);
+void searchPoI(CITYNODE *head);
+void removePoI(CITYNODE *head);
+void insertPoI(CITYNODE *head);
+void editCityInfo(CITYNODE *user);
 
 #endif //PROJETO_LP_AED_TRIPSANDCITIES_H
