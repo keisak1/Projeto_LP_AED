@@ -18,5 +18,7 @@ LIST_QUEUE_NODE test_1() {
     editTrips(head);
     insertTrips(head);
     removeTrips(head);
+    citiesToBin();
+    storeCity();
 }
 

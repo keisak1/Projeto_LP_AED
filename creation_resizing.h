@@ -27,7 +27,7 @@ typedef struct city {
 
 typedef struct cityNode {
     CITY city;
-    struct city *nextcity;
+    struct cityNode *nextcity;
 } CITYNODE;
 
 typedef struct trips {
