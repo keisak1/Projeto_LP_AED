@@ -53,58 +53,57 @@ void removeTrips(LIST_QUEUE_NODE *head) {
 void citiesToBin() {
     char *filename = "City.bin";
     FILE *fptr = fopen(filename, "wb");
-    char *text = "1;Braga;3.0;1.0;3;4;2;\n2;Porto;1.0;2.0;4;2;1;\n3;Aveiro;0.0;1.0;6;1;2;\n4;Guimaraes;2.0;0.0;0;2;4;\n5;Lisboa;5.0;0.1;3;4;5;\n6;Albufeira;3.0;5.0;6;1;1;\n7;Coimbra;0.0;5.0;6;6;6;\n8;Guarda;6.0;5.0;4;1;4;\n9;Chaves;7.0;4.0;2;3;4;\n10;Leiria;8.0;4.0;4;1;3;";
-    fprintf(fptr, "%s", text);
-    fclose(fp);
+    char *text = "1,Braga,3.0,1.0,3,4,2,\n2,Porto,1.0,2.0,4,2,1,\n3,Aveiro,0.0,1.0,6,1,2,\n4,Guimaraes,2.0,0.0,0,2,4,\n5,Lisboa,5.0,0.1,3,4,5,\n6,Albufeira,3.0,5.0,6,1,1,\n7,Coimbra,0.0,5.0,6,6,6,\n8,Guarda,6.0,5.0,4,1,4,\n9,Chaves,7.0,4.0,2,3,4,\n10,Leiria,8.0,4.0,4,1,3,";
+    fwrite(text, strlen(text) + 1, 1, fptr);
+    fclose(fptr);
 }
 
 CITYNODE *storeCity() {
-    char *filename = "City.bin";
     char *token;
-    char row[BUFFER_SIZE];
-    FILE *fptr = fopen(filename, "rb");
-    if (fp == NULL) {
-        printf("Error: could not open file %s", filename);
+    char row2[BUFFER_SIZE];
+    FILE *fptr = fopen("City.bin", "rb");
+    if (fptr == NULL) {
+        printf("Error: could not open file");
     }
     struct cityNode *newNode;
     struct cityNode *prevNode;
     CITYNODE *head;
 
     // For first iteration
-    fgets(row, BUFFER_SIZE, fptr);
-    prevNode = binToNode(token, row);
+    fgets(row2, BUFFER_SIZE, fptr);
+    prevNode = binToNode(token, row2);
     head = prevNode;
 
     // 2-nth
-    while (fgets(row, BUFFER_SIZE, fp)) {
+    while (fgets(row2, BUFFER_SIZE, fptr)) {
         //1 Make next Node
         //2 Link next to newNode
         //3 make it prevNode
-        newNode = binToNode(token, row);
+        newNode = binToNode(token, row2);
         prevNode->nextcity = newNode;
         prevNode = newNode;
         prevNode->nextcity = NULL;
     }
-
+    fclose(fptr);
     return head;
 }
 
 CITYNODE *binToNode(char *token, char *row) {
     struct cityNode *newNode = (struct cityNode *) malloc(sizeof(CITYNODE));
-    token = strtok(row, ";");
+    token = strtok(row, ",");
     newNode->city.ID = atoi(token);
-    token = strtok(row, ";");
+    token = strtok(row, ",");
     newNode->city.name = (char *) malloc(sizeof(char) * strlen(token));
     newNode->city.name = token;
-    token = strtok(row, ";");
+    token = strtok(row, ",");
     newNode->city.x = atof(token);
-    token = strtok(row, ";");
+    token = strtok(row, ",");
     newNode->city.y = atof(token);
-    token = strtok(row, ";");
+    token = strtok(row, ",");
     newNode->city.PoI.beaches = atoi(token);
-    token = strtok(row, ";");
+    token = strtok(row, ",");
     newNode->city.PoI.museums = atoi(token);
-    token = strtok(row, ";");
+    token = strtok(row, ",");
     newNode->city.PoI.parks = atoi(token);
 
     return newNode;
