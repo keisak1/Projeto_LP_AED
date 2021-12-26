@@ -7,6 +7,7 @@
 
 LIST_QUEUE_NODE test_1() {
     LIST_QUEUE_NODE *head = NULL;
+    CITYNODE *cityHead = NULL;
     head = StoreCustomers();
     head = addCustomerHead(head);
     addCustomerTail(head);
@@ -19,6 +20,7 @@ LIST_QUEUE_NODE test_1() {
     insertTrips(head);
     removeTrips(head);
     citiesToBin();
-    storeCity();
+    cityHead = storeCity();
+    searchCityByID(cityHead);
 }
 

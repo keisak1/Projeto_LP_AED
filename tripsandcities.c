@@ -58,6 +58,47 @@ void citiesToBin() {
     fclose(fptr);
 }
 
+CITYNODE *updateToBin(CITYNODE *head) {
+    char *filename = "City.bin";
+    FILE *fptr = fopen(filename, "wb");
+    while (head != NULL) {
+        char* comma = ",";
+        char* nextline ="\n";
+        int ID = head->city.ID;
+        fwrite(&ID, sizeof(ID), 1, fptr);
+        fwrite(comma, strlen(comma),1,fptr);
+        char *name = head->city.name;
+        fwrite(name, strlen(name),1,fptr);
+        fwrite(comma, strlen(comma),1,fptr);
+        char *description = head->city.description;
+        fwrite(description, strlen(description),1,fptr);
+        fwrite(comma, strlen(comma),1,fptr);
+
+        float x = head->city.x;
+        fwrite(&x,sizeof(x),1,fptr);
+        fwrite(comma, strlen(comma),1,fptr);
+
+
+        float y = head->city.y;
+        fwrite(&y,sizeof(y),1,fptr);
+        fwrite(comma, strlen(comma),1,fptr);
+
+        int beaches = head->city.PoI.beaches;
+        fwrite(&beaches,sizeof(beaches),1,fptr);
+        fwrite(comma, strlen(comma),1,fptr);
+
+        int museums = head->city.PoI.museums;
+        fwrite(&museums,sizeof(museums),1,fptr);
+        fwrite(comma, strlen(comma),1,fptr);
+
+        int parks = head->city.PoI.parks;
+        fwrite(&parks,sizeof(parks),1,fptr);
+        fwrite(comma, strlen(comma),1,fptr);
+        fwrite(nextline, strlen(nextline),1,fptr);
+        head = head->nextcity;
+    }
+}
+
 CITYNODE *storeCity() {
     char *token;
     char row2[BUFFER_SIZE];
@@ -110,6 +151,27 @@ CITYNODE *binToNode(char *token, char *row) {
     newNode->city.PoI.parks = atoi(token);
 
     return newNode;
+}
+
+
+void searchCityByID(CITYNODE *head) {
+    struct cityNode *temp = (struct cityNode *) head;
+    int ID = 3;
+    printf("\nSearching the following city ID: %d\n", ID);
+    while (temp != NULL) {
+        if (temp->city.ID == ID) {
+            printf("%d\n", temp->city.ID);
+            printf("%s\n", temp->city.name);
+            printf("%s\n", temp->city.description);
+            printf("Coordinates: ");
+            printf("%f", temp->city.x);
+            printf(" %f\n", temp->city.y);
+            printf("Number of beaches: %d\n", temp->city.PoI.beaches);
+            printf("Number of museums: %d\n", temp->city.PoI.museums);
+            printf("Number of parks: %d\n", temp->city.PoI.parks);
+        }
+        temp = temp->nextcity;
+    }
 }
 
 void searchCityByName(LIST_QUEUE_NODE *head) {

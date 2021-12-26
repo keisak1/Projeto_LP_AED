@@ -15,5 +15,7 @@ void removeTrips(LIST_QUEUE_NODE *head);
 void citiesToBin();
 CITYNODE *storeCity();
 CITYNODE *binToNode(char *token, char *row);
+CITYNODE *updateToBin(CITYNODE *head);
+void searchCityByID(CITYNODE *head);
 
 #endif //PROJETO_LP_AED_TRIPSANDCITIES_H
