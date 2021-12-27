@@ -21,5 +21,8 @@ void searchPoI(CITYNODE *head);
 void removePoI(CITYNODE *head);
 void insertPoI(CITYNODE *head);
 void editCityInfo(CITYNODE *user);
+void searchUserTrip(LIST_QUEUE_NODE *head,CITYNODE *user, int NIF);
+void generateReport(LIST_QUEUE_NODE *head, CITYNODE *user);
+
 
 #endif //PROJETO_LP_AED_TRIPSANDCITIES_H

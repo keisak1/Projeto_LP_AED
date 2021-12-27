@@ -26,5 +26,7 @@ LIST_QUEUE_NODE test_1() {
     insertPoI(cityHead);
     removePoI(cityHead);
     searchPoI(cityHead);
+    searchUserTrip(head, cityHead, 123456789);
+    generateReport(head, cityHead);
 }
 

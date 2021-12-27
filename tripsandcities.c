@@ -182,7 +182,8 @@ void editCityInfo(CITYNODE *user) {
     printf("%s", user->city.description);
     updateToBin(user);
 }
-void insertPoI(CITYNODE *head){
+
+void insertPoI(CITYNODE *head) {
     printf("\n\nResizing and inserting new points of interest");
     printf("\nBefore:\n");
     printf("Number of beaches: %d", head->city.PoI.beaches);
@@ -197,7 +198,8 @@ void insertPoI(CITYNODE *head){
     printf("Number of beaches: %d", head->city.PoI.parks);
     updateToBin(head);
 }
-void removePoI(CITYNODE *head){
+
+void removePoI(CITYNODE *head) {
     printf("\n\nRemoving points of interest");
     printf("\nBefore:\n");
     printf("Number of beaches: %d", head->city.PoI.beaches);
@@ -208,11 +210,12 @@ void removePoI(CITYNODE *head){
     head->city.PoI.parks--;
     printf("\n After: \n");
     printf("Number of beaches: %d", head->city.PoI.beaches);
-    printf("Number of beaches: %d", head->city.PoI.museums);
-    printf("Number of beaches: %d", head->city.PoI.parks);
+    printf("Number of museums: %d", head->city.PoI.museums);
+    printf("Number of parks: %d", head->city.PoI.parks);
     updateToBin(head);
 }
-void searchPoI(CITYNODE *head){
+
+void searchPoI(CITYNODE *head) {
     struct cityNode *temp = (struct cityNode *) head;
     int ID = 1;
     printf("\n\nSearching the following city ID: %d", ID);
@@ -226,3 +229,51 @@ void searchPoI(CITYNODE *head){
     }
 }
 
+void searchUserTrip(LIST_QUEUE_NODE *head, CITYNODE *user, int NIF) {
+
+    while (head != NULL) {
+        if (head->customer.NIF == NIF) {
+            for (int i = 0; i < head->customer.trips.arraySize; ++i) {
+                if (head->customer.trips.citiesvisited[i] == user->city.ID) {
+                    printf("\n%s\n", user->city.name);
+                    printf("Beaches: %d\n", user->city.PoI.beaches);
+                    printf("Museums: %d\n", user->city.PoI.museums);
+                    printf("Parks: %d\n", user->city.PoI.parks);
+                }
+            }
+            head = head->next;
+        }
+    }
+}
+
+void generateReport(LIST_QUEUE_NODE *head, CITYNODE *city){
+    char *filename = "Report.txt";
+    fp = fopen(filename, "w");
+    while (head != NULL) {
+        int length = head->customer.trips.arraySize;
+        fprintf(fp, "NIF: %d\n", head->customer.NIF);
+        fprintf(fp, "Phone: %d\n", head->customer.number);
+        fprintf(fp, "Birthday: %d/%d/%d\n", head->customer.birthday.day, head->customer.birthday.month, head->customer.birthday.year);
+        fprintf(fp, "Register Date: %d/%d/%d\n", head->customer.registerdate.day, head->customer.registerdate.month, head->customer.registerdate.year);
+        fprintf(fp, "Address: %s\n", head->customer.address);
+        fprintf(fp, "Billing Cost: %d\n", head->customer.billingcost);
+        printf("Trips: ");
+        for (int i = 0; i < length; ++i) {
+            while(city != NULL) {
+                if(head->customer.trips.citiesvisited[i] == city->city.ID) {
+                    printf("%s", city->city.name);
+                    fprintf(fp, "%d, ", head->customer.trips.citiesvisited[i]);
+                }
+                printf("\nBeaches: %d\n", city->city.PoI.beaches);
+                printf("\nMuseums: %d\n", city->city.PoI.museums);
+                printf("\nParks: %d\n", city->city.PoI.parks);
+                city = city->nextcity;
+            }
+        }
+        fprintf(fp, ";");
+        fprintf(fp, "\n");
+        head = head->next;
+    }
+    fclose(fp);
+
+}
