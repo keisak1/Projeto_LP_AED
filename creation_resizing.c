@@ -125,6 +125,7 @@ void printList(LIST_QUEUE_NODE *head) {
     }
     printf("\nCustomer list\n");
     while (currentNode != NULL) {
+        printf("\n%s",currentNode->customer.address);
         printf("%d ", currentNode->customer.NIF);
         printf("(");
         for (int i = 0; i < currentNode->customer.trips.arraySize; ++i) {

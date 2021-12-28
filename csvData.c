@@ -103,8 +103,8 @@ LIST_QUEUE_NODE *csvToNode(char *token, char *row) {
     token = strtok(NULL, ";");
     newNode->customer.registerdate.year = atoi(token);
     token = strtok(NULL, ";");
-    newNode->customer.address = (char *) malloc(sizeof(char) * strlen(token));
-    newNode->customer.address = token;
+    newNode->customer.address = (char *) malloc(sizeof(char) * (strlen(token) + 1));
+    strncpy(newNode->customer.address,token,(strlen(token)+1));
     token = strtok(NULL, ";");
     newNode->customer.billingcost = atoi(token);
     token = strtok(NULL, ";");
