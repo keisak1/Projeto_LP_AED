@@ -129,11 +129,11 @@ CITYNODE *binToNode(char *token, char *row) {
     token = strtok(row, ",");
     newNode->city.ID = atoi(token);
     token = strtok(NULL, ",");
-    newNode->city.name = (char *) malloc(sizeof(char) * (strlen(token))+1);
+    newNode->city.name = (char *) malloc(sizeof(char) * (strlen(token)) + 1);
     strcpy(newNode->city.name, token);
     token = strtok(NULL, ",");
-    newNode->city.description = (char *) malloc(sizeof(char) * (strlen(token))+1);
-    strcpy(newNode->city.description ,token);
+    newNode->city.description = (char *) malloc(sizeof(char) * (strlen(token)) + 1);
+    strcpy(newNode->city.description, token);
     token = strtok(NULL, ",");
     newNode->city.x = atof(token);
     token = strtok(NULL, ",");
@@ -247,6 +247,7 @@ void generateReport(LIST_QUEUE_NODE *head, CITYNODE *city) {
     char *filename = "Report.txt";
     fp = fopen(filename, "w");
     while (head != NULL) {
+        struct cityNode *cityReport = city;
         int length = head->customer.trips.arraySize;
         fprintf(fp, "NIF: %d\n", head->customer.NIF);
         fprintf(fp, "Phone: %d\n", head->customer.number);
@@ -256,23 +257,21 @@ void generateReport(LIST_QUEUE_NODE *head, CITYNODE *city) {
                 head->customer.registerdate.year);
         fprintf(fp, "Address: %s\n", head->customer.address);
         fprintf(fp, "Billing Cost: %d\n", head->customer.billingcost);
-        fprintf(fp,"Trips: ");
-        for (int i = 0; i < length; ++i) {
-            while (city != NULL) {
-                if (head->customer.trips.citiesvisited[i] == city->city.ID) {
-                    fprintf(fp,"%s", city->city.name);
-                    fprintf(fp, "%d, ", head->customer.trips.citiesvisited[i]);
+        fprintf(fp, "Trips: ");
+        while (cityReport != NULL) {
+            for (int i = 0; i < length; ++i) {
+                if (head->customer.trips.citiesvisited[i] == cityReport->city.ID) {
+                    fprintf(fp, "%s", cityReport->city.name);
+                    fprintf(fp, "[%d]", head->customer.trips.citiesvisited[i]);
+                    fprintf(fp, "\n   Beaches: %d\n", cityReport->city.PoI.beaches);
+                    fprintf(fp, "   Museums: %d\n", cityReport->city.PoI.museums);
+                    fprintf(fp, "   Parks: %d\n", cityReport->city.PoI.parks);
                 }
-                fprintf(fp,"\nBeaches: %d\n", city->city.PoI.beaches);
-                fprintf(fp,"\nMuseums: %d\n", city->city.PoI.museums);
-                fprintf(fp,"\nParks: %d\n", city->city.PoI.parks);
-                city = city->nextcity;
             }
+            cityReport = cityReport->nextcity;
         }
-        fprintf(fp, ";");
         fprintf(fp, "\n");
         head = head->next;
     }
     fclose(fp);
-
 }

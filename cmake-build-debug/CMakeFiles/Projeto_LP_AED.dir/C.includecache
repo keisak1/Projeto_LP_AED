@@ -6,12 +6,6 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/Nuno/Desktop/Projeto_LP_AED/creation_resizing.c
-creation_resizing.h
-C:/Users/Nuno/Desktop/Projeto_LP_AED/creation_resizing.h
-csvData.h
-C:/Users/Nuno/Desktop/Projeto_LP_AED/csvData.h
-
 C:/Users/Nuno/Desktop/Projeto_LP_AED/creation_resizing.h
 stdio.h
 -
@@ -53,4 +47,14 @@ windows.h
 -
 sys/time.h
 -
+
+C:/Users/Nuno/Desktop/Projeto_LP_AED/tripsandcities.c
+tripsandcities.h
+C:/Users/Nuno/Desktop/Projeto_LP_AED/tripsandcities.h
+
+C:/Users/Nuno/Desktop/Projeto_LP_AED/tripsandcities.h
+creation_resizing.h
+C:/Users/Nuno/Desktop/Projeto_LP_AED/creation_resizing.h
+csvData.h
+C:/Users/Nuno/Desktop/Projeto_LP_AED/csvData.h
 
