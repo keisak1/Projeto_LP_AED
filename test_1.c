@@ -6,6 +6,7 @@
 
 
 LIST_QUEUE_NODE test_1() {
+    int NIF_test = 123456789;
     LIST_QUEUE_NODE *head = NULL;
     CITYNODE *cityHead = NULL;
     head = StoreCustomers();
@@ -26,7 +27,7 @@ LIST_QUEUE_NODE test_1() {
     insertPoI(cityHead);
     removePoI(cityHead);
     searchPoI(cityHead);
-    searchUserTrip(head, cityHead, 123456789);
+    searchUserTrip(head, cityHead, NIF_test);
     generateReport(head, cityHead);
 }
 

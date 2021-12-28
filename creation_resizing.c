@@ -46,9 +46,19 @@ LIST_QUEUE_NODE *StoreCustomers() {
 }
 
 LIST_QUEUE_NODE *addCustomerHead(LIST_QUEUE_NODE *head) {
+    // Adiciona um cliente à cabeça
     printf("\n\nAdding customer to head...\n");
-    printf("%s",head->customer.address);
+    printf("%s", head->customer.address);
     LIST_QUEUE_NODE *test = malloc(sizeof(LIST_QUEUE_NODE));
+    struct node *condition = head;
+    test->customer.NIF = 123456789;
+    while (condition != NULL) {
+        if (condition->customer.NIF == test->customer.NIF) {
+            printf("already exists");
+            return head;
+        }
+        condition = condition->next;
+    }
     test->customer.trips.arraySize = 3;
     test->customer.trips.citiesvisited = malloc(sizeof(int) * test->customer.trips.arraySize);
     test->customer.NIF = 123456789;
@@ -71,10 +81,18 @@ LIST_QUEUE_NODE *addCustomerHead(LIST_QUEUE_NODE *head) {
 
 LIST_QUEUE_NODE *addCustomer(LIST_QUEUE_NODE *head) {
     LIST_QUEUE_NODE *test = malloc(sizeof(LIST_QUEUE_NODE));
+    struct node *condition = head;
+    test->customer.NIF = 123456710;
+    while (condition != NULL) {
+        if (condition->customer.NIF == test->customer.NIF) {
+            printf("already exists");
+            return head;
+        }
+        condition = condition->next;
+    }
     test->customer.trips.arraySize = 3;
     test->customer.trips.citiesvisited = malloc(sizeof(int) * test->customer.trips.arraySize);
     test->customer.address = malloc(sizeof(char) * 100);
-    test->customer.NIF = 123456710;
     test->customer.address = "Rua dos Camelitos";
     test->customer.birthday.day = 25;
     test->customer.birthday.month = 04;
@@ -92,8 +110,18 @@ LIST_QUEUE_NODE *addCustomer(LIST_QUEUE_NODE *head) {
 }
 
 void addCustomerTail(LIST_QUEUE_NODE *tail) {
+    // Insere um cliente à cauda
     printf("\nAdding customer to tail...\n");
     struct node *newNode = malloc(sizeof(LIST_QUEUE_NODE));
+    struct node *condition = tail;
+    newNode->customer.NIF = 987654321;
+    while (condition != NULL) {
+        if (condition->customer.NIF == newNode->customer.NIF) {
+            printf("already exists");
+            return;
+        }
+        condition = condition->next;
+    }
     newNode->customer.trips.arraySize = 3;
     newNode->customer.trips.citiesvisited = malloc(sizeof(int) * newNode->customer.trips.arraySize);
     newNode->customer.address = malloc(sizeof(char) * 100);
@@ -125,7 +153,7 @@ void printList(LIST_QUEUE_NODE *head) {
     }
     printf("\nCustomer list\n");
     while (currentNode != NULL) {
-        printf("\n%s",currentNode->customer.address);
+        printf("\n%s", currentNode->customer.address);
         printf("%d ", currentNode->customer.NIF);
         printf("(");
         for (int i = 0; i < currentNode->customer.trips.arraySize; ++i) {

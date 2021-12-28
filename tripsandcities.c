@@ -73,30 +73,25 @@ CITYNODE *updateToBin(CITYNODE *head) {
         char *description = head->city.description;
         fwrite(description, strlen(description), 1, fptr);
         fwrite(comma, strlen(comma), 1, fptr);
-
         float x = head->city.x;
         fwrite(&x, sizeof(x), 1, fptr);
         fwrite(comma, strlen(comma), 1, fptr);
-
-
         float y = head->city.y;
         fwrite(&y, sizeof(y), 1, fptr);
         fwrite(comma, strlen(comma), 1, fptr);
-
         int beaches = head->city.PoI.beaches;
         fwrite(&beaches, sizeof(beaches), 1, fptr);
         fwrite(comma, strlen(comma), 1, fptr);
-
         int museums = head->city.PoI.museums;
         fwrite(&museums, sizeof(museums), 1, fptr);
         fwrite(comma, strlen(comma), 1, fptr);
-
         int parks = head->city.PoI.parks;
         fwrite(&parks, sizeof(parks), 1, fptr);
         fwrite(comma, strlen(comma), 1, fptr);
         fwrite(nextline, strlen(nextline), 1, fptr);
         head = head->nextcity;
     }
+
 }
 
 CITYNODE *storeCity() {
@@ -186,31 +181,31 @@ void editCityInfo(CITYNODE *user) {
 void insertPoI(CITYNODE *head) {
     printf("\n\nResizing and inserting new points of interest");
     printf("\nBefore:\n");
-    printf("Number of beaches: %d", head->city.PoI.beaches);
-    printf("Number of beaches: %d", head->city.PoI.museums);
+    printf("Number of beaches: %d\n", head->city.PoI.beaches);
+    printf("Number of beaches: %d\n", head->city.PoI.museums);
     printf("Number of beaches: %d", head->city.PoI.parks);
     head->city.PoI.beaches++;
     head->city.PoI.museums++;
     head->city.PoI.parks++;
     printf("\n After: \n");
-    printf("Number of beaches: %d", head->city.PoI.beaches);
-    printf("Number of beaches: %d", head->city.PoI.museums);
-    printf("Number of beaches: %d", head->city.PoI.parks);
+    printf("Number of beaches: %d\n", head->city.PoI.beaches);
+    printf("Number of beaches: %d\n", head->city.PoI.museums);
+    printf("Number of beaches: %d\n\n", head->city.PoI.parks);
     updateToBin(head);
 }
 
 void removePoI(CITYNODE *head) {
     printf("\n\nRemoving points of interest");
     printf("\nBefore:\n");
-    printf("Number of beaches: %d", head->city.PoI.beaches);
-    printf("Number of beaches: %d", head->city.PoI.museums);
+    printf("Number of beaches: %d\n", head->city.PoI.beaches);
+    printf("Number of museums: %d\n", head->city.PoI.museums);
     printf("Number of beaches: %d", head->city.PoI.parks);
     head->city.PoI.beaches--;
     head->city.PoI.museums--;
     head->city.PoI.parks--;
     printf("\n After: \n");
-    printf("Number of beaches: %d", head->city.PoI.beaches);
-    printf("Number of museums: %d", head->city.PoI.museums);
+    printf("Number of beaches: %d\n", head->city.PoI.beaches);
+    printf("Number of museums: %d\n", head->city.PoI.museums);
     printf("Number of parks: %d", head->city.PoI.parks);
     updateToBin(head);
 }
@@ -230,7 +225,7 @@ void searchPoI(CITYNODE *head) {
 }
 
 void searchUserTrip(LIST_QUEUE_NODE *head, CITYNODE *user, int NIF) {
-
+    printf("Searching user trip...\n");
     while (head != NULL) {
         if (head->customer.NIF == NIF) {
             for (int i = 0; i < head->customer.trips.arraySize; ++i) {
@@ -239,14 +234,16 @@ void searchUserTrip(LIST_QUEUE_NODE *head, CITYNODE *user, int NIF) {
                     printf("Beaches: %d\n", user->city.PoI.beaches);
                     printf("Museums: %d\n", user->city.PoI.museums);
                     printf("Parks: %d\n", user->city.PoI.parks);
+                    user = user->nextcity;
                 }
             }
-            head = head->next;
         }
+        head = head->next;
     }
 }
 
 void generateReport(LIST_QUEUE_NODE *head, CITYNODE *city) {
+    printf("\nReport generated thanks for waiting!\n");
     char *filename = "Report.txt";
     fp = fopen(filename, "w");
     while (head != NULL) {
