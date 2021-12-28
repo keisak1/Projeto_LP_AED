@@ -47,6 +47,7 @@ LIST_QUEUE_NODE *StoreCustomers() {
 
 LIST_QUEUE_NODE *addCustomerHead(LIST_QUEUE_NODE *head) {
     printf("\n\nAdding customer to head...\n");
+    printf("%s",head->customer.address);
     LIST_QUEUE_NODE *test = malloc(sizeof(LIST_QUEUE_NODE));
     test->customer.trips.arraySize = 3;
     test->customer.trips.citiesvisited = malloc(sizeof(int) * test->customer.trips.arraySize);
