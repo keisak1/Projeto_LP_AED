@@ -47,7 +47,6 @@ LIST_QUEUE_NODE *StoreCustomers() {
 
 LIST_QUEUE_NODE *addCustomerHead(LIST_QUEUE_NODE *head) {
     printf("\n\nAdding customer to head...\n");
-    LIST_QUEUE_NODE *aux = head;
     LIST_QUEUE_NODE *test = malloc(sizeof(LIST_QUEUE_NODE));
     test->customer.trips.arraySize = 3;
     test->customer.trips.citiesvisited = malloc(sizeof(int) * test->customer.trips.arraySize);
@@ -63,7 +62,7 @@ LIST_QUEUE_NODE *addCustomerHead(LIST_QUEUE_NODE *head) {
     test->customer.trips.citiesvisited[1] = 2;
     test->customer.trips.citiesvisited[2] = 3;
     insertCustomerData(test);
-    test->next = aux;
+    test->next = head;
     head = test;
     nodeToCSV(head);
     return head;

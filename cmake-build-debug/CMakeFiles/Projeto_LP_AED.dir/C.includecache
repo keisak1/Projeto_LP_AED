@@ -6,6 +6,12 @@
 
 #IncludeRegexTransform: 
 
+C:/Users/Nuno/Desktop/Projeto_LP_AED/creation_resizing.c
+creation_resizing.h
+C:/Users/Nuno/Desktop/Projeto_LP_AED/creation_resizing.h
+csvData.h
+C:/Users/Nuno/Desktop/Projeto_LP_AED/csvData.h
+
 C:/Users/Nuno/Desktop/Projeto_LP_AED/creation_resizing.h
 stdio.h
 -
@@ -21,10 +27,6 @@ stdbool.h
 -
 time.h
 -
-
-C:/Users/Nuno/Desktop/Projeto_LP_AED/csvData.c
-csvData.h
-C:/Users/Nuno/Desktop/Projeto_LP_AED/csvData.h
 
 C:/Users/Nuno/Desktop/Projeto_LP_AED/csvData.h
 creation_resizing.h
