@@ -1,0 +1,118 @@
+NIF: 123456710
+Phone: 915989016
+Birthday: 25/4/1999
+Register Date: 28/12/2021
+Address: Rua dos Camelitos
+Billing Cost: 40
+Trips: Braga[1]
+   Beaches: 3
+   Museums: 4
+   Parks: 2
+Aveiro[3]
+   Beaches: 6
+   Museums: 1
+   Parks: 2
+Coimbra[7]
+   Beaches: 6
+   Museums: 6
+   Parks: 6
+Guarda[8]
+   Beaches: 4
+   Museums: 1
+   Parks: 4
+
+NIF: 123456711
+Phone: 915989016
+Birthday: 25/4/1999
+Register Date: 28/12/2021
+Address: Rua dos Camelitos
+Billing Cost: 40
+Trips: Braga[1]
+   Beaches: 3
+   Museums: 4
+   Parks: 2
+Porto[2]
+   Beaches: 4
+   Museums: 2
+   Parks: 1
+Aveiro[3]
+   Beaches: 6
+   Museums: 1
+   Parks: 2
+
+NIF: 123456714
+Phone: 915989016
+Birthday: 25/4/1999
+Register Date: 27/12/2021
+Address: Rua dos Camelos
+Billing Cost: 40
+Trips: Porto[2]
+   Beaches: 4
+   Museums: 2
+   Parks: 1
+Aveiro[3]
+   Beaches: 6
+   Museums: 1
+   Parks: 2
+Coimbra[7]
+   Beaches: 6
+   Museums: 6
+   Parks: 6
+Guarda[8]
+   Beaches: 4
+   Museums: 1
+   Parks: 4
+
+NIF: 123456716
+Phone: 915989016
+Birthday: 25/4/1999
+Register Date: 27/12/2021
+Address: Rua dos Camelos
+Billing Cost: 40
+Trips: Porto[2]
+   Beaches: 4
+   Museums: 2
+   Parks: 1
+Aveiro[3]
+   Beaches: 6
+   Museums: 1
+   Parks: 2
+
+NIF: 123456717
+Phone: 915989016
+Birthday: 25/4/1999
+Register Date: 27/12/2021
+Address: Rua dos Camelos
+Billing Cost: 40
+Trips: Porto[2]
+   Beaches: 4
+   Museums: 2
+   Parks: 1
+Aveiro[3]
+   Beaches: 6
+   Museums: 1
+   Parks: 2
+Guimaraes[4]
+   Beaches: 0
+   Museums: 2
+   Parks: 4
+
+NIF: 123456789
+Phone: 915989016
+Birthday: 25/4/1999
+Register Date: 28/12/2021
+Address: Rua dos Camelos
+Billing Cost: 40
+Trips: Braga[1]
+   Beaches: 3
+   Museums: 4
+   Parks: 2
+Porto[2]
+   Beaches: 4
+   Museums: 2
+   Parks: 1
+Aveiro[3]
+   Beaches: 6
+   Museums: 1
+   Parks: 2
+
