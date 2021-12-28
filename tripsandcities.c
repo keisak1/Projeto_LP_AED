@@ -133,21 +133,21 @@ CITYNODE *binToNode(char *token, char *row) {
     struct cityNode *newNode = (struct cityNode *) malloc(sizeof(CITYNODE));
     token = strtok(row, ",");
     newNode->city.ID = atoi(token);
-    token = strtok(row, ",");
-    newNode->city.name = (char *) malloc(sizeof(char) * strlen(token));
-    newNode->city.name = token;
-    token = strtok(row, ",");
-    newNode->city.description = (char *) malloc(sizeof(char) * strlen(token));
-    newNode->city.description = token;
-    token = strtok(row, ",");
+    token = strtok(NULL, ",");
+    newNode->city.name = (char *) malloc(sizeof(char) * (strlen(token))+1);
+    strcpy(newNode->city.name, token);
+    token = strtok(NULL, ",");
+    newNode->city.description = (char *) malloc(sizeof(char) * (strlen(token))+1);
+    strcpy(newNode->city.description ,token);
+    token = strtok(NULL, ",");
     newNode->city.x = atof(token);
-    token = strtok(row, ",");
+    token = strtok(NULL, ",");
     newNode->city.y = atof(token);
-    token = strtok(row, ",");
+    token = strtok(NULL, ",");
     newNode->city.PoI.beaches = atoi(token);
-    token = strtok(row, ",");
+    token = strtok(NULL, ",");
     newNode->city.PoI.museums = atoi(token);
-    token = strtok(row, ",");
+    token = strtok(NULL, ",");
     newNode->city.PoI.parks = atoi(token);
 
     return newNode;
@@ -218,10 +218,10 @@ void removePoI(CITYNODE *head) {
 void searchPoI(CITYNODE *head) {
     struct cityNode *temp = (struct cityNode *) head;
     int ID = 1;
-    printf("\n\nSearching the following city ID: %d", ID);
+    printf("\n\nSearching the following city PoI by ID: %d", ID);
     while (temp != NULL) {
         if (temp->city.ID == ID) {
-            printf("Number of beaches: %d\n", temp->city.PoI.beaches);
+            printf("\nNumber of beaches: %d\n", temp->city.PoI.beaches);
             printf("Number of museums: %d\n", temp->city.PoI.museums);
             printf("Number of parks: %d\n", temp->city.PoI.parks);
         }
@@ -246,27 +246,29 @@ void searchUserTrip(LIST_QUEUE_NODE *head, CITYNODE *user, int NIF) {
     }
 }
 
-void generateReport(LIST_QUEUE_NODE *head, CITYNODE *city){
+void generateReport(LIST_QUEUE_NODE *head, CITYNODE *city) {
     char *filename = "Report.txt";
     fp = fopen(filename, "w");
     while (head != NULL) {
         int length = head->customer.trips.arraySize;
         fprintf(fp, "NIF: %d\n", head->customer.NIF);
         fprintf(fp, "Phone: %d\n", head->customer.number);
-        fprintf(fp, "Birthday: %d/%d/%d\n", head->customer.birthday.day, head->customer.birthday.month, head->customer.birthday.year);
-        fprintf(fp, "Register Date: %d/%d/%d\n", head->customer.registerdate.day, head->customer.registerdate.month, head->customer.registerdate.year);
+        fprintf(fp, "Birthday: %d/%d/%d\n", head->customer.birthday.day, head->customer.birthday.month,
+                head->customer.birthday.year);
+        fprintf(fp, "Register Date: %d/%d/%d\n", head->customer.registerdate.day, head->customer.registerdate.month,
+                head->customer.registerdate.year);
         fprintf(fp, "Address: %s\n", head->customer.address);
         fprintf(fp, "Billing Cost: %d\n", head->customer.billingcost);
-        printf("Trips: ");
+        fprintf(fp,"Trips: ");
         for (int i = 0; i < length; ++i) {
-            while(city != NULL) {
-                if(head->customer.trips.citiesvisited[i] == city->city.ID) {
-                    printf("%s", city->city.name);
+            while (city != NULL) {
+                if (head->customer.trips.citiesvisited[i] == city->city.ID) {
+                    fprintf(fp,"%s", city->city.name);
                     fprintf(fp, "%d, ", head->customer.trips.citiesvisited[i]);
                 }
-                printf("\nBeaches: %d\n", city->city.PoI.beaches);
-                printf("\nMuseums: %d\n", city->city.PoI.museums);
-                printf("\nParks: %d\n", city->city.PoI.parks);
+                fprintf(fp,"\nBeaches: %d\n", city->city.PoI.beaches);
+                fprintf(fp,"\nMuseums: %d\n", city->city.PoI.museums);
+                fprintf(fp,"\nParks: %d\n", city->city.PoI.parks);
                 city = city->nextcity;
             }
         }

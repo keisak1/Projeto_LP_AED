@@ -9,7 +9,6 @@ LIST_QUEUE_NODE test_1() {
     LIST_QUEUE_NODE *head = NULL;
     CITYNODE *cityHead = NULL;
     head = StoreCustomers();
-    printList(head);
     head = addCustomerHead(head);
     addCustomerTail(head);
     printList(head);
