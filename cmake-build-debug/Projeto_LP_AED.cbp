@@ -86,6 +86,12 @@
 		<Unit filename="C:/Users/Nuno/Desktop/Projeto_LP_AED/csvData.h">
 			<Option target="Projeto_LP_AED"/>
 		</Unit>
+		<Unit filename="C:/Users/Nuno/Desktop/Projeto_LP_AED/geneticalgorithm.c">
+			<Option target="Projeto_LP_AED"/>
+		</Unit>
+		<Unit filename="C:/Users/Nuno/Desktop/Projeto_LP_AED/geneticalgorithm.h">
+			<Option target="Projeto_LP_AED"/>
+		</Unit>
 		<Unit filename="C:/Users/Nuno/Desktop/Projeto_LP_AED/main.c">
 			<Option target="Projeto_LP_AED"/>
 		</Unit>

@@ -176,6 +176,30 @@ csvData.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projeto_LP_AED.dir\build.make CMakeFiles/Projeto_LP_AED.dir/csvData.c.s
 .PHONY : csvData.c.s
 
+geneticalgorithm.obj: geneticalgorithm.c.obj
+.PHONY : geneticalgorithm.obj
+
+# target to build an object file
+geneticalgorithm.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projeto_LP_AED.dir\build.make CMakeFiles/Projeto_LP_AED.dir/geneticalgorithm.c.obj
+.PHONY : geneticalgorithm.c.obj
+
+geneticalgorithm.i: geneticalgorithm.c.i
+.PHONY : geneticalgorithm.i
+
+# target to preprocess a source file
+geneticalgorithm.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projeto_LP_AED.dir\build.make CMakeFiles/Projeto_LP_AED.dir/geneticalgorithm.c.i
+.PHONY : geneticalgorithm.c.i
+
+geneticalgorithm.s: geneticalgorithm.c.s
+.PHONY : geneticalgorithm.s
+
+# target to generate assembly for a file
+geneticalgorithm.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projeto_LP_AED.dir\build.make CMakeFiles/Projeto_LP_AED.dir/geneticalgorithm.c.s
+.PHONY : geneticalgorithm.c.s
+
 main.obj: main.c.obj
 .PHONY : main.obj
 
@@ -263,6 +287,9 @@ help:
 	@echo ... csvData.obj
 	@echo ... csvData.i
 	@echo ... csvData.s
+	@echo ... geneticalgorithm.obj
+	@echo ... geneticalgorithm.i
+	@echo ... geneticalgorithm.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

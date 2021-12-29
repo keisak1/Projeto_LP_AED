@@ -6,10 +6,10 @@
 
 
 void editTrips(LIST_QUEUE_NODE *user) {
-    printf("\nEditing trip:\n");
+    printf("\nEditing trip: ");
     printf("%d", user->customer.trips.citiesvisited[0]);
     printf("\nEdited to: ");
-    user->customer.trips.citiesvisited[0] = 8;
+    user->customer.trips.citiesvisited[0] = 4;
     printf("%d", user->customer.trips.citiesvisited[0]);
     nodeToCSV(user);
 
