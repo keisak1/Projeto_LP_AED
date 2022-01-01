@@ -12,6 +12,7 @@
 #include <string.h>
 #include <stdbool.h>
 #include <time.h>
+#include <math.h>
 
 #define BUFFER_SIZE 1024
 FILE *fp;

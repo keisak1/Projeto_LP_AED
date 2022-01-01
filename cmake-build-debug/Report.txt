@@ -39,6 +39,10 @@ Aveiro[3]
    Beaches: 6
    Museums: 1
    Parks: 2
+Guarda[8]
+   Beaches: 4
+   Museums: 1
+   Parks: 4
 
 NIF: 123456714
 Phone: 915989016
@@ -77,6 +81,14 @@ Aveiro[3]
    Beaches: 6
    Museums: 1
    Parks: 2
+Coimbra[7]
+   Beaches: 6
+   Museums: 6
+   Parks: 6
+Chaves[9]
+   Beaches: 2
+   Museums: 3
+   Parks: 4
 
 NIF: 123456717
 Phone: 915989016
@@ -96,6 +108,10 @@ Guimaraes[4]
    Beaches: 0
    Museums: 2
    Parks: 4
+Lisboa[5]
+   Beaches: 3
+   Museums: 4
+   Parks: 5
 
 NIF: 123456789
 Phone: 915989016
@@ -115,4 +131,8 @@ Aveiro[3]
    Beaches: 6
    Museums: 1
    Parks: 2
+Albufeira[6]
+   Beaches: 6
+   Museums: 1
+   Parks: 1
 

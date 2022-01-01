@@ -21,10 +21,24 @@ stdbool.h
 -
 time.h
 -
+math.h
+-
 
 C:/Users/Nuno/Desktop/Projeto_LP_AED/csvData.h
 creation_resizing.h
 C:/Users/Nuno/Desktop/Projeto_LP_AED/creation_resizing.h
+
+C:/Users/Nuno/Desktop/Projeto_LP_AED/geneticalgorithm.c
+geneticalgorithm.h
+C:/Users/Nuno/Desktop/Projeto_LP_AED/geneticalgorithm.h
+
+C:/Users/Nuno/Desktop/Projeto_LP_AED/geneticalgorithm.h
+creation_resizing.h
+C:/Users/Nuno/Desktop/Projeto_LP_AED/creation_resizing.h
+csvData.h
+C:/Users/Nuno/Desktop/Projeto_LP_AED/csvData.h
+tripsandcities.h
+C:/Users/Nuno/Desktop/Projeto_LP_AED/tripsandcities.h
 
 C:/Users/Nuno/Desktop/Projeto_LP_AED/libs_src/lib_stats.h
 stdio.h
@@ -47,10 +61,6 @@ windows.h
 -
 sys/time.h
 -
-
-C:/Users/Nuno/Desktop/Projeto_LP_AED/tripsandcities.c
-tripsandcities.h
-C:/Users/Nuno/Desktop/Projeto_LP_AED/tripsandcities.h
 
 C:/Users/Nuno/Desktop/Projeto_LP_AED/tripsandcities.h
 creation_resizing.h

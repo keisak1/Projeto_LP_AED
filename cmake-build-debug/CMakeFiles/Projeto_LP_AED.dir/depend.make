@@ -13,9 +13,18 @@ CMakeFiles/Projeto_LP_AED.dir/csvData.c.obj: \
  ../csvData.h \
  ../libs_src/lib_stats.h \
  ../libs_src/lib_util.h
+CMakeFiles/Projeto_LP_AED.dir/geneticalgorithm.c.obj: \
+ ../creation_resizing.h \
+ ../csvData.h \
+ ../geneticalgorithm.c \
+ ../geneticalgorithm.h \
+ ../libs_src/lib_stats.h \
+ ../libs_src/lib_util.h \
+ ../tripsandcities.h
 CMakeFiles/Projeto_LP_AED.dir/main.c.obj: \
  ../creation_resizing.h \
  ../csvData.h \
+ ../geneticalgorithm.h \
  ../libs_src/lib_stats.h \
  ../libs_src/lib_util.h \
  ../main.c \
@@ -24,6 +33,7 @@ CMakeFiles/Projeto_LP_AED.dir/main.c.obj: \
 CMakeFiles/Projeto_LP_AED.dir/test_1.c.obj: \
  ../creation_resizing.h \
  ../csvData.h \
+ ../geneticalgorithm.h \
  ../libs_src/lib_stats.h \
  ../libs_src/lib_util.h \
  ../test_1.c \

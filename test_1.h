@@ -6,6 +6,7 @@
 #define PROJETO_LP_AED_TEST_1_H
 #include "creation_resizing.h"
 #include "tripsandcities.h"
+#include "geneticalgorithm.h"
 LIST_QUEUE_NODE test_1();
 
 
