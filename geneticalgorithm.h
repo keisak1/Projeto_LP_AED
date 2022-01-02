@@ -10,16 +10,16 @@
 #include "tripsandcities.h"
 
 typedef struct individuals {
-    int *individual;
-    double fitness;
-    double probability;
+    double *fitness;
+    double *probability;
+    int **individual;
 } INDIVIDUAL;
 
 typedef struct population {
     int generation;
     int bestIndividuals;
-    INDIVIDUAL individuals;
     struct population *next;
+    INDIVIDUAL individuals;
 } POPULATION;
 
 

@@ -6,54 +6,50 @@
 
 
 POPULATION *createPopulation(CITYNODE *cities, POPULATION *population, int populationSize) {
-    int i = 1, j = 1;
+
     int generation = 0;
     double fitness_sum;
     POPULATION *pophead, *prevPop, *newPop;
     srand(time(NULL));
-    // First iteration
-    prevPop = initialPop(population, populationSize);
-    pophead = prevPop;
+    pophead = initialPop(population, populationSize);
 
-    // 2-Populationsizeth
-    while (i != populationSize) {
-        newPop = initialPop(population, populationSize);
-        prevPop->next = newPop;
-        prevPop = newPop;
-        prevPop->next = NULL;
-        i++;
-    }
 
     fitness_sum = evaluate_fitness(cities, pophead);
 
     generation++;
-    POPULATION *currentNode = pophead;
-    while(currentNode != NULL){
-        currentNode->individuals.probability = currentNode->individuals.fitness / fitness_sum;
-        currentNode->generation = generation;
-        currentNode= currentNode->next;
+    for (int j = 0; j < populationSize; ++j) {
+        pophead->individuals.probability[j] = pophead->individuals.fitness[j] / fitness_sum;
+        pophead->generation = generation;
     }
+
+
 
     printf("Random population generation completed");
     return pophead;
 }
 
 double evaluate_fitness(CITYNODE *cities, POPULATION *population) {
+    for (int i = 0; i < 10; ++i) {
+        population->individuals.fitness = (double *) malloc(sizeof(double) * 10);
+        population->individuals.probability = (double *) malloc(sizeof(double) * 10);
+
+    }
     int id_1, id_2;
     double fitness_sum = 0;
     double total = 0;
-    while (population != NULL) {
+    for (int i = 0; i < 10; ++i) {
         for (int j = 0; j < 10; ++j) {
-            id_1 = population->individuals.individual[j];
-            id_2 = population->individuals.individual[j + 1];
+            id_1 = population->individuals.individual[i][j];
+            id_2 = population->individuals.individual[i][j + 1];
             total += calculateDistance(cities, id_1, id_2);
         }
-        population->individuals.fitness = 1 / total;
-        fitness_sum += population->individuals.fitness;
+        population->individuals.fitness[i] = 1 / total;
         total = 0;
-        population = population->next;
+        fitness_sum += population->individuals.fitness[i];
     }
+
     return fitness_sum;
+
 }
 
 
@@ -76,23 +72,38 @@ double calculateDistance(CITYNODE *cities, int id_1, int id_2) {
 
 POPULATION *initialPop(POPULATION *population, int populationSize) {
     population = (struct population *) malloc(sizeof(POPULATION) * populationSize);
-    population->individuals.individual = malloc(sizeof(int) * populationSize);
+
+    population->individuals.individual = (int **) malloc(sizeof(int *) * populationSize);
+    for (int i = 0; i < populationSize; ++i) {
+        population->individuals.individual[i] = (int *) malloc(sizeof(int) * populationSize);
+    }
     int x, temp, i;
     for (int u = 0; u < populationSize; u++) {
         //Fill array with desired numbers
         for (temp = 0, i = 1; temp < 10; i++, temp++) {
-            population->individuals.individual[temp] = i;
+            population->individuals.individual[u][temp] = i;
         }
         for (int j = 9; j > 0; j--) {
             x = rand() % j;     // rand number
             //shuffling
-            temp = population->individuals.individual[j];
-            population->individuals.individual[j] = population->individuals.individual[x];
-            population->individuals.individual[x] = temp;
+            temp = population->individuals.individual[u][j];
+            population->individuals.individual[u][j] = population->individuals.individual[u][x];
+            population->individuals.individual[u][x] = temp;
         }
     }
 
     return population;
 }
 
+/*
+POPULATION *highest_fitness(POPULATION *population) {
+    POPULATION *currentNode = population;
+    double initial = currentNode->individuals.fitness;
+    while (currentNode != NULL) {
+        if (currentNode->individuals.fitness > initial) {
+            initial = currentNode->individuals.fitness;
+        }
+        currentNode = currentNode->next;
+    }
 
+}*/
