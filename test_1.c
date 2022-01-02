@@ -7,7 +7,8 @@
 
 LIST_QUEUE_NODE test_1() {
     int NIF_test = 123456789;
-    POPULATION *population;
+    int populationSize = 10;
+    POPULATION *population = NULL;
     LIST_QUEUE_NODE *head = NULL;
     CITYNODE *cityHead = NULL;
     head = StoreCustomers();
@@ -30,6 +31,6 @@ LIST_QUEUE_NODE test_1() {
     searchPoI(cityHead);
     searchUserTrip(head, cityHead, NIF_test);
     generateReport(head, cityHead);
-    createPopulation(cityHead,population,10);
+    createPopulation(cityHead, population, populationSize);
 }
 

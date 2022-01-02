@@ -9,20 +9,26 @@
 #include "csvData.h"
 #include "tripsandcities.h"
 
-typedef struct nodeInfo {
-    int individual;
+typedef struct individuals {
+    int *individual;
     double fitness;
-    struct nodeInfo *next;
-} NODEINFO;
+    double probability;
+} INDIVIDUAL;
 
 typedef struct population {
-    int path[10];
-    double fitness;
+    int generation;
+    int bestIndividuals;
+    INDIVIDUAL individuals;
+    struct population *next;
 } POPULATION;
 
 
-void createPopulation(CITYNODE *cities, POPULATION *population, int populationSize);
-double * evaluate_fitness(CITYNODE * cities, POPULATION * population, int populationSize);
-double calculateDistance(CITYNODE * cities, int id_1, int id_2);
+POPULATION *initialPop(POPULATION *population, int populationSize);
+
+POPULATION *createPopulation(CITYNODE *cities, POPULATION *population, int populationSize);
+
+double evaluate_fitness(CITYNODE *cities, POPULATION *population);
+
+double calculateDistance(CITYNODE *cities, int id_1, int id_2);
 
 #endif //PROJETO_LP_AED_GENETICALGORITHM_H
