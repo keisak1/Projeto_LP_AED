@@ -5,7 +5,7 @@
 #include "geneticalgorithm.h"
 
 
-void createPopulation(POPULATION *population, int populationSize) {
+void createPopulation(CITYNODE *cities, POPULATION *population, int populationSize) {
     population = malloc(sizeof(POPULATION) * populationSize);
     int x, temp, i;
     int num[10];
@@ -25,8 +25,8 @@ void createPopulation(POPULATION *population, int populationSize) {
                 population[u].path[k] = num[k];
             }
         }
-
     }
+    evaluate_fitness(cities, population, populationSize);
     printf("Random population generation completed");
 }
 
@@ -37,24 +37,28 @@ double *evaluate_fitness(CITYNODE *cities, POPULATION *population, int populatio
         total = 0;
         for (int j = 0; j < 10; ++j) {
             id_1 = population[i].path[j];
-            total += calculateDistance(cities, id_1);
+            id_2 = population[i].path[j + 1];
+            total += calculateDistance(cities, id_1, id_2);
         }
         population[i].fitness = 1 / total;
+        printf("\nFitness: %f\n", population[i].fitness); // NAO ESQUECER DE APAGAR
     }
 }
 
 
-double calculateDistance(CITYNODE *cities, int id_1) {
-    double dist;
+double calculateDistance(CITYNODE *cities, int id_1, int id_2) {
+    double dist, x1, x2, y1, y2;
     while (cities != NULL) {
         if (cities->city.ID == id_1) {
-            double x1 = cities->city.x;
-            double y1 = cities->city.y;
-            double x2 = cities->nextcity->city.x;
-            double y2 = cities->nextcity->city.y;
-            dist = sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
+            x1 = cities->city.x;
+            y1 = cities->city.y;
+        }
+        if (cities->city.ID == id_2) {
+            x2 = cities->city.x;
+            y2 = cities->city.y;
         }
         cities = cities->nextcity;
     }
+    dist = sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
     return dist;
 }
