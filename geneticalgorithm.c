@@ -149,14 +149,14 @@ POPULATION *probSelection(POPULATION *population, int elitismNumber, int populat
 
         first = 0;
         last = populationSize;
-        extraction = (double) rand() /fitness_sum;   //rand() generates a number in [0, RAND_MAX] therefore dividing by RAND_MAX we obtain a value in [0, 1]
-
+        extraction = ((double) rand()) / RAND_MAX;   //rand() generates a number in [0, RAND_MAX] therefore dividing by RAND_MAX we obtain a value in [0, 1]
+        extraction = extraction * fitness_sum; // [0, fitness_sum]
         while (first !=last) {  //Binary search of the first element of the CDF that has bigger probability than the value randomly generated
             pivot = (first + last) / 2;
-            if (population->individuals.probability[pivot] == extraction) {
+            if (population->individuals.fitness[pivot] == extraction) {
                 break;
             }
-            if (population->individuals.probability[pivot] > extraction) {
+            if (population->individuals.fitness[pivot] > extraction) {
                 last = pivot;
             } else {
                 first = pivot + 1;
