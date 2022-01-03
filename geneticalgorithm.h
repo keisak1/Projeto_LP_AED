@@ -30,5 +30,6 @@ POPULATION *createPopulation(CITYNODE *cities, POPULATION *population, int popul
 double evaluate_fitness(CITYNODE *cities, POPULATION *population);
 
 double calculateDistance(CITYNODE *cities, int id_1, int id_2);
+int highest_fitness(POPULATION *population, int populationSize);
 
 #endif //PROJETO_LP_AED_GENETICALGORITHM_H

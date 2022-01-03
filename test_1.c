@@ -31,6 +31,7 @@ LIST_QUEUE_NODE test_1() {
     searchPoI(cityHead);
     searchUserTrip(head, cityHead, NIF_test);
     generateReport(head, cityHead);
-    createPopulation(cityHead, population, populationSize);
+    population = createPopulation(cityHead, population, populationSize);
+    highest_fitness(population, populationSize);
 }
 

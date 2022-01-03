@@ -29,11 +29,9 @@ POPULATION *createPopulation(CITYNODE *cities, POPULATION *population, int popul
 }
 
 double evaluate_fitness(CITYNODE *cities, POPULATION *population) {
-    for (int i = 0; i < 10; ++i) {
         population->individuals.fitness = (double *) malloc(sizeof(double) * 10);
         population->individuals.probability = (double *) malloc(sizeof(double) * 10);
 
-    }
     int id_1, id_2;
     double fitness_sum = 0;
     double total = 0;
@@ -95,15 +93,15 @@ POPULATION *initialPop(POPULATION *population, int populationSize) {
     return population;
 }
 
-/*
-POPULATION *highest_fitness(POPULATION *population) {
-    POPULATION *currentNode = population;
-    double initial = currentNode->individuals.fitness;
-    while (currentNode != NULL) {
-        if (currentNode->individuals.fitness > initial) {
-            initial = currentNode->individuals.fitness;
-        }
-        currentNode = currentNode->next;
-    }
 
-}*/
+int highest_fitness(POPULATION *population, int populationSize) {
+    double initial = population->individuals.fitness[0];
+    int index = 0;
+    for (int i = 1; i < populationSize; i++){
+        if (population->individuals.fitness[i] > initial) {
+            initial = population->individuals.fitness[i];
+            index = i;
+        }
+    }
+    return index;
+}
