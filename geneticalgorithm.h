@@ -11,7 +11,7 @@
 
 typedef struct individuals {
     double *fitness;
-    double *probability;
+    double finess_sum;
     int **individual;
     int **nextindividual;
 } INDIVIDUAL;
@@ -26,7 +26,7 @@ typedef struct population {
 
 POPULATION *initialPop(POPULATION *population, int populationSize);
 POPULATION *createPopulation(CITYNODE *cities, POPULATION *population, int populationSize, int elitismNumber);
-double evaluate_fitness(CITYNODE *cities, POPULATION *population);
+POPULATION *evaluate_fitness(CITYNODE *cities, POPULATION *population, int populationSize);
 double calculateDistance(CITYNODE *cities, int id_1, int id_2);
 POPULATION *elitism(POPULATION *population, int elitismNumber, int populationSize);
 POPULATION *selection(POPULATION *population, int elitismNumber, int populationSize, double fitness_sum);

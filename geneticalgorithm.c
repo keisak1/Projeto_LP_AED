@@ -13,26 +13,22 @@ POPULATION *createPopulation(CITYNODE *cities, POPULATION *population, int popul
     srand(time(NULL));
     pophead = initialPop(population, populationSize);
 
-
-    fitness_sum = evaluate_fitness(cities, pophead);
+    pophead = evaluate_fitness(cities, pophead, populationSize);
 
     generation++;
-    for (int j = 0; j < populationSize; ++j) {
-        pophead->individuals.probability[j] = pophead->individuals.fitness[j] / fitness_sum;
-        pophead->generation = generation;
-    }
-    pophead = selection(pophead, elitismNumber, populationSize, fitness_sum);
+
+    pophead->generation = generation;
+
+    pophead = selection(pophead, elitismNumber, populationSize, pophead->individuals.finess_sum);
 
     printf("Random population generation completed\n");
     return pophead;
 }
 
-double evaluate_fitness(CITYNODE *cities, POPULATION *population) {
-    population->individuals.fitness = (double *) malloc(sizeof(double) * 10);
-    population->individuals.probability = (double *) malloc(sizeof(double) * 10);
+POPULATION *evaluate_fitness(CITYNODE *cities, POPULATION *population, int populationSize) {
+    population->individuals.fitness = (double *) malloc(sizeof(double) * populationSize);
 
     int id_1, id_2;
-    double fitness_sum = 0;
     double total = 0;
     for (int i = 0; i < 10; ++i) {
         for (int j = 0; j < 10; ++j) {
@@ -42,10 +38,13 @@ double evaluate_fitness(CITYNODE *cities, POPULATION *population) {
         }
         population->individuals.fitness[i] = 1 / total;
         total = 0;
-        fitness_sum += population->individuals.fitness[i];
+        population->individuals.finess_sum += population->individuals.fitness[i];
+    }
+    for (int i = 0; i < populationSize; ++i) {
+        printf("%f\n", population->individuals.fitness[i]);
     }
 
-    return fitness_sum;
+    return population;
 
 }
 
@@ -131,49 +130,36 @@ POPULATION *elitism(POPULATION *population, int elitismNumber, int populationSiz
             }
         }
     }
-    for (int i = 0; i < populationSize; i++) {
-        for (int j = 0; j < populationSize; j++) {
-            printf("%d\t", population->individuals.nextindividual[i][j]);
-        }
-        printf("\n");
-    }
     return population;
 }
 
 POPULATION *probSelection(POPULATION *population, int elitismNumber, int populationSize, double fitness_sum) {
-    double extraction;
-    int pivot, first, last, k = 0;
+    double random;
+    int k = 0, j;
     int *candidates = malloc(sizeof(int) * (populationSize - elitismNumber));
 
-    for (int i = 0; i < populationSize - elitismNumber; i++) {
+    for (int i = 0; i < populationSize - elitismNumber; i++ ) {
+        random = ((double) rand()) / RAND_MAX;   //rand() generates a number in [0, RAND_MAX] therefore dividing by RAND_MAX we obtain a value in [0, 1]
+        random = random * fitness_sum; // [0, fitness_sum]
 
-        first = 0;
-        last = populationSize;
-        extraction = ((double) rand()) / RAND_MAX;   //rand() generates a number in [0, RAND_MAX] therefore dividing by RAND_MAX we obtain a value in [0, 1]
-        extraction = extraction * fitness_sum; // [0, fitness_sum]
-        while (first !=last) {  //Binary search of the first element of the CDF that has bigger probability than the value randomly generated
-            pivot = (first + last) / 2;
-            if (population->individuals.fitness[pivot] == extraction) {
-                break;
-            }
-            if (population->individuals.fitness[pivot] > extraction) {
-                last = pivot;
-            } else {
-                first = pivot + 1;
-            }
+        for (j = 0; j < populationSize && random > 0; j++) {
+            random -= population->individuals.fitness[j];
         }
-        candidates[i] = first; //candidates[i] contains the index of the extracted individual, the bigger the probability, the more the index appears in candidates (so it reproduces often because it's a good solution)
+        candidates[i] = j-1 ;//candidates[i] contains the index of the extracted individual, the bigger the probability, the more the index appears in candidates
+
     }
 
-    for (int i = elitismNumber ; i < populationSize; ++i) {
+
+    for (int i = elitismNumber; i < populationSize; ++i) {
         for (int l = 0; l < populationSize; ++l) {
             population->individuals.nextindividual[i][l] = population->individuals.individual[candidates[k]][l];
         }
         k++;
     }
+
     for (int i = 0; i < populationSize; i++) {
-        for (int j = 0; j < populationSize; j++) {
-            printf("%d\t", population->individuals.nextindividual[i][j]);
+        for (int x = 0; x < populationSize; x++) {
+            printf("%d\t", population->individuals.nextindividual[i][x]);
         }
         printf("\n");
     }
