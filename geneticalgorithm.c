@@ -7,11 +7,13 @@
 
 POPULATION *createPopulation(CITYNODE *cities, POPULATION *population, int populationSize, int elitismNumber) {
     int generation = 0;
-    double fitness_sum;
     POPULATION *pophead;
 
     srand(time(NULL));
+
     pophead = initialPop(population, populationSize);
+
+    printf("Random population generation completed\n");
 
     pophead = evaluate_fitness(cities, pophead, populationSize);
 
@@ -21,7 +23,7 @@ POPULATION *createPopulation(CITYNODE *cities, POPULATION *population, int popul
 
     pophead = selection(pophead, elitismNumber, populationSize, pophead->individuals.finess_sum);
 
-    printf("Random population generation completed\n");
+
     return pophead;
 }
 
@@ -148,7 +150,6 @@ POPULATION *probSelection(POPULATION *population, int elitismNumber, int populat
         candidates[i] = j-1 ;//candidates[i] contains the index of the extracted individual, the bigger the probability, the more the index appears in candidates
 
     }
-
 
     for (int i = elitismNumber; i < populationSize; ++i) {
         for (int l = 0; l < populationSize; ++l) {
