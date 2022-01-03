@@ -8,6 +8,7 @@
 LIST_QUEUE_NODE test_1() {
     int NIF_test = 123456789;
     int populationSize = 10;
+    int elitismNumber = 2;
     POPULATION *population = NULL;
     LIST_QUEUE_NODE *head = NULL;
     CITYNODE *cityHead = NULL;
@@ -31,7 +32,6 @@ LIST_QUEUE_NODE test_1() {
     searchPoI(cityHead);
     searchUserTrip(head, cityHead, NIF_test);
     generateReport(head, cityHead);
-    population = createPopulation(cityHead, population, populationSize);
-    highest_fitness(population, populationSize);
+    createPopulation(cityHead, population, populationSize, elitismNumber);
 }
 
