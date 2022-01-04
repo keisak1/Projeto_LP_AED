@@ -6,7 +6,7 @@
 
 
 void bubbleSort(LIST_QUEUE_NODE *start) {
-    int swapped, i;
+    int swapped;
     LIST_QUEUE_NODE *ptr1;
     LIST_QUEUE_NODE *ptr2 = NULL;
     if (start == NULL) {

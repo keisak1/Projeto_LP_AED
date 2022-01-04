@@ -5,8 +5,10 @@
 #include "geneticalgorithm.h"
 
 
-POPULATION *createPopulation(CITYNODE *cities, POPULATION *population, int populationSize, int elitismNumber) {
+POPULATION *
+cycleGeneration(CITYNODE *cities, POPULATION *population, int populationSize, int elitismNumber, double mutationRate, int generations) {
     int generation = 0;
+
     POPULATION *pophead;
 
     srand(time(NULL));
@@ -15,15 +17,26 @@ POPULATION *createPopulation(CITYNODE *cities, POPULATION *population, int popul
 
     printf("Random population generation completed\n");
 
-    pophead = evaluate_fitness(cities, pophead, populationSize);
 
-    generation++;
+    for (int i = 0; i < generations; ++i) {
 
-    pophead->generation = generation;
+        pophead = evaluate_fitness(cities, pophead, populationSize);
 
-    pophead = selection(pophead, elitismNumber, populationSize, pophead->individuals.finess_sum);
-    crossover(pophead, populationSize, elitismNumber);
+        generation++;
 
+        pophead->generation = generation;
+
+        pophead = selection(pophead, elitismNumber, populationSize, pophead->individuals.finess_sum);
+        pophead = crossover(pophead, populationSize, elitismNumber, mutationRate);
+
+        printf("\nGeneration %d\n", generation);
+        for (int j = 0; j < populationSize; j++) {
+            for (int x = 0; x < populationSize; x++) {
+                printf("%d\t", population->individuals.individual[j][x]);
+            }
+            printf("\n");
+        }
+    }
     return pophead;
 }
 
@@ -169,8 +182,10 @@ POPULATION *probSelection(POPULATION *population, int elitismNumber, int populat
     return population;
 }
 
-POPULATION *crossover(POPULATION *population, int populationSize, int elitismNumber) {
+POPULATION *crossover(POPULATION *population, int populationSize, int elitismNumber, double mutationRate) {
+
     // allocating memory
+
     population->next = (struct population *) malloc(sizeof(POPULATION));
     population->next->individuals.individual = (int **) malloc(sizeof(int *) * populationSize);
     for (int i = 0; i < populationSize; ++i) {
@@ -180,6 +195,7 @@ POPULATION *crossover(POPULATION *population, int populationSize, int elitismNum
     for (int i = 0; i < populationSize; ++i) {
         population->next->individuals.nextindividual[i] = (int *) malloc(sizeof(int) * populationSize);
     }
+
     //................................................
 
     // PMX crossover algorithm
@@ -188,7 +204,7 @@ POPULATION *crossover(POPULATION *population, int populationSize, int elitismNum
     int crossPoint2 = populationSize - ((populationSize / 2) - 1);
     for (int i = elitismNumber; i < populationSize; i = i + 2) {
         for (int j = crossPoint1; j <= crossPoint2; ++j) {
-            population->next->individuals.individual[i][j] = population->individuals.nextindividual[i+1][j];
+            population->next->individuals.individual[i][j] = population->individuals.nextindividual[i + 1][j];
             population->next->individuals.individual[i + 1][j] = population->individuals.nextindividual[i][j];
         }
     }
@@ -206,48 +222,38 @@ POPULATION *crossover(POPULATION *population, int populationSize, int elitismNum
     }
 
 
-
     // elitism
+
     for (int i = 0; i < elitismNumber; ++i) {
         for (int j = 0; j < populationSize; ++j) {
             population->next->individuals.individual[i][j] = population->individuals.nextindividual[i][j];
         }
     }
-    population = population->next;
 
+    population = population->next;
     int num;
-    printf("BEFORE:\n");
-    for (int i = 0; i < populationSize; i++) {
-        for (int x = 0; x < populationSize; x++) {
-            printf("%d\t", population->individuals.individual[i][x]);
-        }
-        printf("\n");
-    }
-        for (int i = 0; i < populationSize; ++i) {
-            for (int j = 0; j < populationSize; ++j) {
-                if (j < crossPoint1 || j > crossPoint2) {
-                    num = population->individuals.individual[i][j];
-                    for (int k = j + 1; k < populationSize; ++k) {
-                        if (num == population->individuals.individual[i][k]) {
-                            population->individuals.individual[i][j] = replaceDuplicate(population, i, populationSize,j);
-                        }
+
+    for (int i = 0; i < populationSize; ++i) {
+        for (int j = 0; j < populationSize; ++j) {
+            if (j < crossPoint1 || j > crossPoint2) {
+                num = population->individuals.individual[i][j];
+                for (int k = j + 1; k < populationSize; ++k) {
+                    if (num == population->individuals.individual[i][k]) {
+                        population->individuals.individual[i][j] = replaceDuplicate(population, i, populationSize);
                     }
                 }
             }
         }
-
-    printf("\ntest\n");
-    for (int i = 0; i < populationSize; i++) {
-        for (int x = 0; x < populationSize; x++) {
-            printf("%d\t", population->individuals.individual[i][x]);
-        }
-        printf("\n");
     }
+
+    population = mutation(population, mutationRate, populationSize);
+
+
     return population;
 }
 
 
-int replaceDuplicate(POPULATION *population, int i, int populationSize, int j) {
+int replaceDuplicate(POPULATION *population, int i, int populationSize) {
     int u, notduplicate;
     for (u = 1; u < 10; ++u) {
         notduplicate = 0;
@@ -261,3 +267,20 @@ int replaceDuplicate(POPULATION *population, int i, int populationSize, int j) {
         }
     }
 }
+
+POPULATION *mutation(POPULATION *population, double mutationRate, int populationSize) {
+    int p = RAND_MAX * mutationRate;
+
+    for (int i = 0; i < populationSize; ++i) {
+        if (rand() < p) {
+            int randCity1 = rand() % 10 + 1;
+            int randCity2 = rand() % 10 + 1;
+            int temp = population->individuals.individual[i][randCity1];
+            population->individuals.individual[i][randCity1] = population->individuals.individual[i][randCity2];
+            population->individuals.individual[i][randCity2] = temp;
+        }
+    }
+
+    return population;
+}
+

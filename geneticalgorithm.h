@@ -25,12 +25,13 @@ typedef struct population {
 
 
 POPULATION *initialPop(POPULATION *population, int populationSize);
-POPULATION *createPopulation(CITYNODE *cities, POPULATION *population, int populationSize, int elitismNumber);
+POPULATION *cycleGeneration(CITYNODE *cities, POPULATION *population, int populationSize, int elitismNumber, double mutationRate, int generations);
 POPULATION *evaluate_fitness(CITYNODE *cities, POPULATION *population, int populationSize);
 double calculateDistance(CITYNODE *cities, int id_1, int id_2);
 POPULATION *elitism(POPULATION *population, int elitismNumber, int populationSize);
 POPULATION *selection(POPULATION *population, int elitismNumber, int populationSize, double fitness_sum);
 POPULATION *probSelection(POPULATION *population, int elitismNumber, int populationSize, double fitness_sum);
-POPULATION *crossover(POPULATION *population, int populationSize, int elitismNumber);
-int replaceDuplicate(POPULATION *population, int i, int popuLationSize, int j);
+POPULATION *crossover(POPULATION *population, int populationSize, int elitismNumber, double mutationRate);
+int replaceDuplicate(POPULATION *population, int i, int popuLationSize);
+POPULATION *mutation(POPULATION *population, double mutationRate, int populationSize);
 #endif //PROJETO_LP_AED_GENETICALGORITHM_H
