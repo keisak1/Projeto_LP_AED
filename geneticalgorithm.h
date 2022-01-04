@@ -32,5 +32,5 @@ POPULATION *elitism(POPULATION *population, int elitismNumber, int populationSiz
 POPULATION *selection(POPULATION *population, int elitismNumber, int populationSize, double fitness_sum);
 POPULATION *probSelection(POPULATION *population, int elitismNumber, int populationSize, double fitness_sum);
 POPULATION *crossover(POPULATION *population, int populationSize, int elitismNumber);
-
+int replaceDuplicate(POPULATION *population, int i, int popuLationSize, int j);
 #endif //PROJETO_LP_AED_GENETICALGORITHM_H
