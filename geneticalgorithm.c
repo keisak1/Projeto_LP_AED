@@ -193,35 +193,38 @@ POPULATION *crossover(POPULATION *population, int populationSize, int elitismNum
         }
     }
 
-    for (int i = elitismNumber + 1; i < populationSize; i = i + 2) {
+    for (int i = elitismNumber; i < populationSize; i = i + 2) {
         for (int j = 0; j < crossPoint1; ++j) {
-            if ((i = populationSize - 1)) {
-                population->next->individuals.individual[i][j] = population->individuals.nextindividual[i - 1][j];
-                population->next->individuals.individual[i - 1][j] = population->individuals.nextindividual[i][j];
-                continue;
-            }
-            population->next->individuals.individual[i][j] = population->individuals.nextindividual[i - 1][j];
+            population->next->individuals.individual[i][j] = population->individuals.nextindividual[i + 1][j];
             population->next->individuals.individual[i + 1][j] = population->individuals.nextindividual[i][j];
         }
+
         for (int j = crossPoint2; j < populationSize; ++j) {
-            if((i = populationSize -1 )){
-                population->next->individuals.individual[i][j] = population->individuals.nextindividual[i - 1][j];
-                population->next->individuals.individual[i - 1][j] = population->individuals.nextindividual[i][j];
-                continue;
-            }
-            population->next->individuals.individual[i][j] = population->individuals.nextindividual[i - 1][j];
             population->next->individuals.individual[i + 1][j] = population->individuals.nextindividual[i][j];
+            population->next->individuals.individual[i][j] = population->individuals.nextindividual[i + 1][j];
         }
     }
 
+
+
+    // elitism
+    for (int i = 0; i < elitismNumber; ++i) {
+        for (int j = 0; j < populationSize; ++j) {
+            population->next->individuals.individual[i][j] = population->individuals.nextindividual[i][j];
+        }
+    }
+    population = population->next;
+
     int aux[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    int num;
     for (int i = 0; i < populationSize; ++i) {
         for (int j = 0; j < populationSize; ++j) {
-            for (int k = 0; k < populationSize; ++k) {
-                if (population->next->individuals.individual[i][j] == population->next->individuals.individual[i][k]) {
+            num = population->individuals.individual[i][j];
+            for (int k = j + 1; k < populationSize; ++k) {
+                if (num == population->individuals.individual[i][k] && (i < crossPoint1 || i > crossPoint2)) {
                     for (int l = 0; l < populationSize; ++l) {
-                        if (population->next->individuals.individual[i][j] != aux[l]) {
-                            population->next->individuals.individual[i][j] = aux[l];
+                        if (population->individuals.individual[i][j] != aux[l]) {
+                            population->individuals.individual[i][j] = aux[l];
                         }
                     }
                 }
@@ -229,7 +232,7 @@ POPULATION *crossover(POPULATION *population, int populationSize, int elitismNum
         }
     }
 
-    population = population->next;
+    printf("test\n");
     for (int i = 0; i < populationSize; i++) {
         for (int x = 0; x < populationSize; x++) {
             printf("%d\t", population->individuals.individual[i][x]);
