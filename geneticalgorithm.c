@@ -22,7 +22,7 @@ POPULATION *createPopulation(CITYNODE *cities, POPULATION *population, int popul
     pophead->generation = generation;
 
     pophead = selection(pophead, elitismNumber, populationSize, pophead->individuals.finess_sum);
-
+    crossover(pophead, populationSize, elitismNumber);
 
     return pophead;
 }
@@ -69,7 +69,7 @@ double calculateDistance(CITYNODE *cities, int id_1, int id_2) {
 }
 
 POPULATION *initialPop(POPULATION *population, int populationSize) {
-    population = (struct population *) malloc(sizeof(POPULATION) * populationSize);
+    population = (struct population *) malloc(sizeof(POPULATION));
 
     population->individuals.individual = (int **) malloc(sizeof(int *) * populationSize);
     for (int i = 0; i < populationSize; ++i) {
@@ -140,14 +140,16 @@ POPULATION *probSelection(POPULATION *population, int elitismNumber, int populat
     int k = 0, j;
     int *candidates = malloc(sizeof(int) * (populationSize - elitismNumber));
 
-    for (int i = 0; i < populationSize - elitismNumber; i++ ) {
-        random = ((double) rand()) / RAND_MAX;   //rand() generates a number in [0, RAND_MAX] therefore dividing by RAND_MAX we obtain a value in [0, 1]
+    for (int i = 0; i < populationSize - elitismNumber; i++) {
+        random = ((double) rand()) /
+                 RAND_MAX;   //rand() generates a number in [0, RAND_MAX] therefore dividing by RAND_MAX we obtain a value in [0, 1]
         random = random * fitness_sum; // [0, fitness_sum]
 
         for (j = 0; j < populationSize && random > 0; j++) {
             random -= population->individuals.fitness[j];
         }
-        candidates[i] = j-1 ;//candidates[i] contains the index of the extracted individual, the bigger the probability, the more the index appears in candidates
+        candidates[i] = j -
+                        1;//candidates[i] contains the index of the extracted individual, the bigger the probability, the more the index appears in candidates
 
     }
 
@@ -161,6 +163,76 @@ POPULATION *probSelection(POPULATION *population, int elitismNumber, int populat
     for (int i = 0; i < populationSize; i++) {
         for (int x = 0; x < populationSize; x++) {
             printf("%d\t", population->individuals.nextindividual[i][x]);
+        }
+        printf("\n");
+    }
+    return population;
+}
+
+POPULATION *crossover(POPULATION *population, int populationSize, int elitismNumber) {
+    // allocating memory
+    population->next = (struct population *) malloc(sizeof(POPULATION));
+    population->next->individuals.individual = (int **) malloc(sizeof(int *) * populationSize);
+    for (int i = 0; i < populationSize; ++i) {
+        population->next->individuals.individual[i] = (int *) malloc(sizeof(int) * populationSize);
+    }
+    population->next->individuals.nextindividual = (int **) malloc(sizeof(int *) * populationSize);
+    for (int i = 0; i < populationSize; ++i) {
+        population->next->individuals.nextindividual[i] = (int *) malloc(sizeof(int) * populationSize);
+    }
+    //................................................
+
+    // PMX crossover algorithm
+
+    int crossPoint1 = (populationSize / 2) - 1;
+    int crossPoint2 = populationSize - ((populationSize / 2) - 1);
+    for (int i = elitismNumber; i < populationSize; i = i + 2) {
+        for (int j = crossPoint1; j <= crossPoint2; ++j) {
+            population->next->individuals.individual[i][j] = population->individuals.nextindividual[i][j];
+            population->next->individuals.individual[i + 1][j] = population->individuals.nextindividual[i + 1][j];
+        }
+    }
+
+    for (int i = elitismNumber + 1; i < populationSize; i = i + 2) {
+        for (int j = 0; j < crossPoint1; ++j) {
+            if ((i = populationSize - 1)) {
+                population->next->individuals.individual[i][j] = population->individuals.nextindividual[i - 1][j];
+                population->next->individuals.individual[i - 1][j] = population->individuals.nextindividual[i][j];
+                continue;
+            }
+            population->next->individuals.individual[i][j] = population->individuals.nextindividual[i - 1][j];
+            population->next->individuals.individual[i + 1][j] = population->individuals.nextindividual[i][j];
+        }
+        for (int j = crossPoint2; j < populationSize; ++j) {
+            if((i = populationSize -1 )){
+                population->next->individuals.individual[i][j] = population->individuals.nextindividual[i - 1][j];
+                population->next->individuals.individual[i - 1][j] = population->individuals.nextindividual[i][j];
+                continue;
+            }
+            population->next->individuals.individual[i][j] = population->individuals.nextindividual[i - 1][j];
+            population->next->individuals.individual[i + 1][j] = population->individuals.nextindividual[i][j];
+        }
+    }
+
+    int aux[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    for (int i = 0; i < populationSize; ++i) {
+        for (int j = 0; j < populationSize; ++j) {
+            for (int k = 0; k < populationSize; ++k) {
+                if (population->next->individuals.individual[i][j] == population->next->individuals.individual[i][k]) {
+                    for (int l = 0; l < populationSize; ++l) {
+                        if (population->next->individuals.individual[i][j] != aux[l]) {
+                            population->next->individuals.individual[i][j] = aux[l];
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    population = population->next;
+    for (int i = 0; i < populationSize; i++) {
+        for (int x = 0; x < populationSize; x++) {
+            printf("%d\t", population->individuals.individual[i][x]);
         }
         printf("\n");
     }
