@@ -6,7 +6,8 @@
 
 
 POPULATION *
-cycleGeneration(CITYNODE *cities, POPULATION *population, int populationSize, int elitismNumber, double mutationRate, int generations) {
+cycleGeneration(CITYNODE *cities, POPULATION *population, int populationSize, int elitismNumber, double mutationRate,
+                int generations) {
     int generation = 0;
 
     POPULATION *pophead;
@@ -21,21 +22,21 @@ cycleGeneration(CITYNODE *cities, POPULATION *population, int populationSize, in
     for (int i = 0; i < generations; ++i) {
 
         pophead = evaluate_fitness(cities, pophead, populationSize);
-
         generation++;
-
         pophead->generation = generation;
-
         pophead = selection(pophead, elitismNumber, populationSize, pophead->individuals.finess_sum);
         pophead = crossover(pophead, populationSize, elitismNumber, mutationRate);
 
         printf("\nGeneration %d\n", generation);
         for (int j = 0; j < populationSize; j++) {
             for (int x = 0; x < populationSize; x++) {
-                printf("%d\t", population->individuals.individual[j][x]);
+                printf("%d\t", pophead->next->individuals.individual[j][x]);
             }
             printf("\n");
         }
+
+        pophead = pophead->next;
+
     }
     return pophead;
 }
@@ -56,7 +57,7 @@ POPULATION *evaluate_fitness(CITYNODE *cities, POPULATION *population, int popul
         population->individuals.finess_sum += population->individuals.fitness[i];
     }
     for (int i = 0; i < populationSize; ++i) {
-        printf("%f\n", population->individuals.fitness[i]);
+        printf("Individual[%d]: %f\n", i+1, population->individuals.fitness[i]);
     }
 
     return population;
@@ -88,10 +89,7 @@ POPULATION *initialPop(POPULATION *population, int populationSize) {
     for (int i = 0; i < populationSize; ++i) {
         population->individuals.individual[i] = (int *) malloc(sizeof(int) * populationSize);
     }
-    population->individuals.nextindividual = (int **) malloc(sizeof(int *) * populationSize);
-    for (int i = 0; i < populationSize; ++i) {
-        population->individuals.nextindividual[i] = (int *) malloc(sizeof(int) * populationSize);
-    }
+
     int x, temp, i;
     for (int u = 0; u < populationSize; u++) {
         //Fill array with desired numbers
@@ -121,6 +119,10 @@ POPULATION *elitism(POPULATION *population, int elitismNumber, int populationSiz
     // return index of n = elitismNumber, numbers of fitness array
 
     double *temp, a;
+    population->individuals.nextindividual = (int **) malloc(sizeof(int *) * populationSize);
+    for (int i = 0; i < populationSize; ++i) {
+        population->individuals.nextindividual[i] = (int *) malloc(sizeof(int) * populationSize);
+    }
     temp = (double *) malloc(sizeof(double) * populationSize);
     int k = 0;
     for (int i = 0; i < populationSize; ++i) {
@@ -142,10 +144,13 @@ POPULATION *elitism(POPULATION *population, int elitismNumber, int populationSiz
                     population->individuals.nextindividual[k][l] = population->individuals.individual[i][l];
                 }
                 k++;
+                if(k == elitismNumber){
+                    return population;
+                }
             }
         }
     }
-    return population;
+    free(temp);
 }
 
 POPULATION *probSelection(POPULATION *population, int elitismNumber, int populationSize, double fitness_sum) {
@@ -154,15 +159,13 @@ POPULATION *probSelection(POPULATION *population, int elitismNumber, int populat
     int *candidates = malloc(sizeof(int) * (populationSize - elitismNumber));
 
     for (int i = 0; i < populationSize - elitismNumber; i++) {
-        random = ((double) rand()) /
-                 RAND_MAX;   //rand() generates a number in [0, RAND_MAX] therefore dividing by RAND_MAX we obtain a value in [0, 1]
+        random = ((double) rand()) /RAND_MAX;   //rand() generates a number in [0, RAND_MAX] therefore dividing by RAND_MAX we obtain a value in [0, 1]
         random = random * fitness_sum; // [0, fitness_sum]
 
         for (j = 0; j < populationSize && random > 0; j++) {
             random -= population->individuals.fitness[j];
         }
-        candidates[i] = j -
-                        1;//candidates[i] contains the index of the extracted individual, the bigger the probability, the more the index appears in candidates
+        candidates[i] = j -1;//candidates[i] contains the index of the extracted individual, the bigger the probability, the more the index appears in candidates
 
     }
 
@@ -173,12 +176,6 @@ POPULATION *probSelection(POPULATION *population, int elitismNumber, int populat
         k++;
     }
 
-    for (int i = 0; i < populationSize; i++) {
-        for (int x = 0; x < populationSize; x++) {
-            printf("%d\t", population->individuals.nextindividual[i][x]);
-        }
-        printf("\n");
-    }
     return population;
 }
 
@@ -230,16 +227,15 @@ POPULATION *crossover(POPULATION *population, int populationSize, int elitismNum
         }
     }
 
-    population = population->next;
     int num;
 
     for (int i = 0; i < populationSize; ++i) {
         for (int j = 0; j < populationSize; ++j) {
             if (j < crossPoint1 || j > crossPoint2) {
-                num = population->individuals.individual[i][j];
+                num = population->next->individuals.individual[i][j];
                 for (int k = j + 1; k < populationSize; ++k) {
-                    if (num == population->individuals.individual[i][k]) {
-                        population->individuals.individual[i][j] = replaceDuplicate(population, i, populationSize);
+                    if (num == population->next->individuals.individual[i][k]) {
+                        population->next->individuals.individual[i][j] = replaceDuplicate(population, i, populationSize);
                     }
                 }
             }
@@ -258,7 +254,7 @@ int replaceDuplicate(POPULATION *population, int i, int populationSize) {
     for (u = 1; u < 10; ++u) {
         notduplicate = 0;
         for (int k = 0; k < populationSize; ++k) {
-            if (u != population->individuals.individual[i][k]) {
+            if (u != population->next->individuals.individual[i][k]) {
                 notduplicate += 1;
                 if (notduplicate == 10) {
                     return u;
@@ -275,9 +271,9 @@ POPULATION *mutation(POPULATION *population, double mutationRate, int population
         if (rand() < p) {
             int randCity1 = rand() % 10 + 1;
             int randCity2 = rand() % 10 + 1;
-            int temp = population->individuals.individual[i][randCity1];
-            population->individuals.individual[i][randCity1] = population->individuals.individual[i][randCity2];
-            population->individuals.individual[i][randCity2] = temp;
+            int temp = population->next->individuals.individual[i][randCity1];
+            population->next->individuals.individual[i][randCity1] = population->next->individuals.individual[i][randCity2];
+            population->next->individuals.individual[i][randCity2] = temp;
         }
     }
 
