@@ -9,7 +9,8 @@ LIST_QUEUE_NODE test_1() {
     int NIF_test = 123456789;
     int populationSize = 10;
     int elitismNumber = 2;
-    double mutationRate= 0.25;
+    double mutationRate = 0.25;
+    int ID = 3;
     int generations = 20;
     POPULATION *population = NULL;
     LIST_QUEUE_NODE *head = NULL;
@@ -34,6 +35,6 @@ LIST_QUEUE_NODE test_1() {
     searchPoI(cityHead);
     searchUserTrip(head, cityHead, NIF_test);
     generateReport(head, cityHead);
-    cycleGeneration(cityHead, population, populationSize, elitismNumber, mutationRate,  generations);
+    population = cycleGeneration(cityHead, population, populationSize, elitismNumber, mutationRate, generations, ID);
 }
 

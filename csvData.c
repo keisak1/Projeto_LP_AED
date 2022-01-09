@@ -6,6 +6,10 @@
 
 
 void bubbleSort(LIST_QUEUE_NODE *start) {
+    /**
+     * ordenação de clientes pelo NIF.
+     * Complexidade temporal de O(n²).
+     */
     int swapped;
     LIST_QUEUE_NODE *ptr1;
     LIST_QUEUE_NODE *ptr2 = NULL;
@@ -28,6 +32,9 @@ void bubbleSort(LIST_QUEUE_NODE *start) {
 }
 
 void swap(LIST_QUEUE_NODE *a, LIST_QUEUE_NODE *b) {
+    /**
+     * Função para fazer uma troca entre clientes.
+     */
     struct node *temp = malloc(sizeof(LIST_QUEUE_NODE));
     temp->customer = a->customer;
     a->customer = b->customer;
@@ -35,6 +42,9 @@ void swap(LIST_QUEUE_NODE *a, LIST_QUEUE_NODE *b) {
 }
 
 LIST_QUEUE_NODE *nodeToCSV(LIST_QUEUE_NODE *head) {
+    /**
+     * Escrever dados da lista ligada para o ficheiro CSV.
+     */
     char *filename = "Data.csv";
     fp = fopen(filename, "w");
     while (head != NULL) {
@@ -60,6 +70,9 @@ LIST_QUEUE_NODE *nodeToCSV(LIST_QUEUE_NODE *head) {
 }
 
 LIST_QUEUE_NODE *appendnodeToCSV(LIST_QUEUE_NODE *tail) {
+    /**
+     * Adiciona à cauda nova informação.
+     */
     char *filename = "Data.csv";
     fp = fopen(filename, "a");
     while (tail != NULL) {
@@ -85,6 +98,9 @@ LIST_QUEUE_NODE *appendnodeToCSV(LIST_QUEUE_NODE *tail) {
 }
 
 LIST_QUEUE_NODE *csvToNode(char *token, char *row) {
+    /**
+     * Transferir a informação do CSV para node.
+     */
     struct node *newNode = (struct node *) malloc(sizeof(LIST_QUEUE_NODE));
     token = strtok(row, ";");
     newNode->customer.NIF = atoi(token);
@@ -119,6 +135,9 @@ LIST_QUEUE_NODE *csvToNode(char *token, char *row) {
 }
 
 void insertCustomerData(LIST_QUEUE_NODE *newNode) {
+    /**
+     * Função para inserir dados num cliente.
+     */
     time_t t = time(NULL);
     struct tm tm = *localtime(&t);
     int length = newNode->customer.trips.arraySize;

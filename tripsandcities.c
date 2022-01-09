@@ -6,6 +6,9 @@
 
 
 void editTrips(LIST_QUEUE_NODE *user) {
+    /**
+     * Função para editar uma viagem e atualizar no CSV.
+     */
     printf("\nEditing trip: ");
     printf("%d", user->customer.trips.citiesvisited[0]);
     printf("\nEdited to: ");
@@ -16,6 +19,9 @@ void editTrips(LIST_QUEUE_NODE *user) {
 }
 
 void insertTrips(LIST_QUEUE_NODE *head) {
+    /**
+     * Função para introduzir uma nova viagem ao cliente e atualizar no CSV.
+     */
     printf("\n\nResizing and inserting new trips");
     printf("\nBefore:\n");
     for (int i = 0; i < head->customer.trips.arraySize; ++i) {
@@ -34,6 +40,9 @@ void insertTrips(LIST_QUEUE_NODE *head) {
 }
 
 void removeTrips(LIST_QUEUE_NODE *head) {
+    /**
+     * Remove viagem do cliente e atualiza no CSV.
+     */
     printf("\n\nRemoving a trip by its position in the array");
     int trippos = 5;
     printf("Removing the 5th position");
@@ -51,6 +60,9 @@ void removeTrips(LIST_QUEUE_NODE *head) {
 }
 
 void citiesToBin() {
+    /**
+     * Cria ficheiro binário com cidades, descrição, pontos de interesse e as suas coordenadas.
+     */
     char *filename = "City.bin";
     FILE *fptr = fopen(filename, "wb");
     char *text = "1,Braga,Belas praias,3.0,1.0,3,4,2,\n2,Porto,Belas praias,1.0,2.0,4,2,1,\n3,Aveiro,Belas praias,0.0,1.0,6,1,2,\n4,Guimaraes,Belas praias,2.0,0.0,0,2,4,\n5,Lisboa,Belas praias,5.0,0.1,3,4,5,\n6,Albufeira,Belas praias,3.0,5.0,6,1,1,\n7,Coimbra,Belas praias,0.0,5.0,6,6,6,\n8,Guarda,Belas praias,6.0,5.0,4,1,4,\n9,Chaves,Belas praias,7.0,4.0,2,3,4,\n10,Leiria,Belas praias,8.0,4.0,4,1,3,";
@@ -59,6 +71,9 @@ void citiesToBin() {
 }
 
 CITYNODE *updateToBin(CITYNODE *head) {
+    /**
+     * Escreve a lista ligada no ficheiro binário.
+     */
     char *filename = "City.bin";
     FILE *fptr = fopen(filename, "wb");
     while (head != NULL) {
@@ -95,6 +110,9 @@ CITYNODE *updateToBin(CITYNODE *head) {
 }
 
 CITYNODE *storeCity() {
+    /**
+     * Guarda cidades na lista ligada.
+     */
     char *token;
     char row2[BUFFER_SIZE];
     FILE *fptr = fopen("City.bin", "rb");
@@ -125,6 +143,9 @@ CITYNODE *storeCity() {
 }
 
 CITYNODE *binToNode(char *token, char *row) {
+    /**
+     * Do ficheiro binário guarda a informação numa lista ligada.
+     */
     struct cityNode *newNode = (struct cityNode *) malloc(sizeof(CITYNODE));
     token = strtok(row, ",");
     newNode->city.ID = atoi(token);
@@ -150,6 +171,9 @@ CITYNODE *binToNode(char *token, char *row) {
 
 
 void searchCityByID(CITYNODE *head) {
+    /**
+     * Procura cidade pelo ID.
+     */
     struct cityNode *temp = (struct cityNode *) head;
     int ID = 3;
     printf("\nSearching the following city ID: %d\n", ID);
@@ -170,6 +194,9 @@ void searchCityByID(CITYNODE *head) {
 }
 
 void editCityInfo(CITYNODE *user) {
+    /**
+     * Edita informação da cidade e atualiza no ficheiro binário.
+     */
     printf("\nEditing city description:\n");
     printf("%s", user->city.description);
     printf("\nEdited to: ");
@@ -179,6 +206,9 @@ void editCityInfo(CITYNODE *user) {
 }
 
 void insertPoI(CITYNODE *head) {
+    /**
+     * Insere pontos de interesse a uma cidade e atualiza no ficheiro binário.
+     */
     printf("\n\nResizing and inserting new points of interest");
     printf("\nBefore:\n");
     printf("Number of beaches: %d\n", head->city.PoI.beaches);
@@ -195,6 +225,9 @@ void insertPoI(CITYNODE *head) {
 }
 
 void removePoI(CITYNODE *head) {
+    /**
+     * Remove pontos de interesse a uma cidade e atualiza no ficheiro binário.
+     */
     printf("\n\nRemoving points of interest");
     printf("\nBefore:\n");
     printf("Number of beaches: %d\n", head->city.PoI.beaches);
@@ -211,6 +244,9 @@ void removePoI(CITYNODE *head) {
 }
 
 void searchPoI(CITYNODE *head) {
+    /**
+     * Procura pontos de interesse de uma cidade, usando o ID da cidade para pesquisar.
+     */
     struct cityNode *temp = (struct cityNode *) head;
     int ID = 1;
     printf("\n\nSearching the following city PoI by ID: %d", ID);
@@ -225,6 +261,9 @@ void searchPoI(CITYNODE *head) {
 }
 
 void searchUserTrip(LIST_QUEUE_NODE *head, CITYNODE *user, int NIF) {
+    /**
+     * Procura a viagem do cliente a partir do NIF.
+     */
     printf("Searching user trip...\n");
     while (head != NULL) {
         if (head->customer.NIF == NIF) {
@@ -243,6 +282,9 @@ void searchUserTrip(LIST_QUEUE_NODE *head, CITYNODE *user, int NIF) {
 }
 
 void generateReport(LIST_QUEUE_NODE *head, CITYNODE *city) {
+    /**
+     * Gera um relatório com clientes e as respetivas viagens.
+     */
     printf("\nReport generated thanks for waiting!\n");
     char *filename = "Report.txt";
     fp = fopen(filename, "w");

@@ -14,6 +14,9 @@ LIST_QUEUE_NODE *sortByNIF(LIST_QUEUE_NODE *head) {
 }
 
 LIST_QUEUE_NODE *StoreCustomers() {
+    /**
+     * Guarda a informação do cliente, carregada pelo ficheiro CSV para uma estrutura com lista ligada.
+     */
     char *filename = "Data.csv";
     char *token;
     char row[BUFFER_SIZE];
@@ -46,6 +49,10 @@ LIST_QUEUE_NODE *StoreCustomers() {
 }
 
 LIST_QUEUE_NODE *addCustomerHead(LIST_QUEUE_NODE *head) {
+    /**
+     * Adiciona um cliente à cabeça da lista ligada, se o NIF do cliente já existir, não alterará a lista ligada.
+     * Se não existir tal cliente, adicionará à cabeça do node e irá atualizar o ficheiro CSV.
+     */
     // Adiciona um cliente à cabeça
     printf("\n\nAdding customer to head...\n");
     printf("%s", head->customer.address);
@@ -110,6 +117,9 @@ LIST_QUEUE_NODE *addCustomer(LIST_QUEUE_NODE *head) {
 }
 
 void addCustomerTail(LIST_QUEUE_NODE *tail) {
+    /**
+     * Insere cliente à cauda, se já existir, não altera a lista ligada, se não for esse o caso irá atualizar a lista ligada e o ficheiro CSV.
+     */
     // Insere um cliente à cauda
     printf("\nAdding customer to tail...\n");
     struct node *newNode = malloc(sizeof(LIST_QUEUE_NODE));
@@ -147,6 +157,9 @@ void addCustomerTail(LIST_QUEUE_NODE *tail) {
 
 
 void printList(LIST_QUEUE_NODE *head) {
+    /**
+     * Imprime a lista ligada com os clientes.
+     */
     LIST_QUEUE_NODE *currentNode = head;
     if (head == NULL) {
         printf("\nLinked list is empty\n");
@@ -165,6 +178,9 @@ void printList(LIST_QUEUE_NODE *head) {
 }
 
 LIST_QUEUE_NODE *deleteCustomer(LIST_QUEUE_NODE *head) {
+    /**
+     * Elimina um cliente, desconectando o node da lista ligada
+     */
     struct node *temp;
     int NIF = 987654321;
     printf("\nDeleting the following NIF: %d\n", NIF);
@@ -189,6 +205,9 @@ LIST_QUEUE_NODE *deleteCustomer(LIST_QUEUE_NODE *head) {
 }
 
 void SearchNIF(LIST_QUEUE_NODE *head) {
+    /**
+     * procura por um NIF existente na lista ligada e imprime o cliente.
+     */
     struct node *temp = head;
     int NIF = 123456789;
     printf("\nSearching the following NIF: %d\n", NIF);

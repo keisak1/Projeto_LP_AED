@@ -1,0 +1,50 @@
+\hypertarget{geneticalgorithm_8h_source}{}\doxysection{geneticalgorithm.\+h}
+\mbox{\hyperlink{geneticalgorithm_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by Nuno on 29/12/2021.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef PROJETO\_LP\_AED\_GENETICALGORITHM\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define PROJETO\_LP\_AED\_GENETICALGORITHM\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{creation__resizing_8h}{creation\_resizing.h}}"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{csv_data_8h}{csvData.h}}"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{tripsandcities_8h}{tripsandcities.h}}"{}}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structindividuals}{individuals}} \{}
+\DoxyCodeLine{13     \textcolor{keywordtype}{double} *\mbox{\hyperlink{structindividuals_a4b8e68303c38d0109d8db17d195e6c51}{fitness}};}
+\DoxyCodeLine{14     \textcolor{keywordtype}{double} \mbox{\hyperlink{structindividuals_a89411905cfd3299aa9b16cf31af04b96}{finess\_sum}};}
+\DoxyCodeLine{15     \textcolor{keywordtype}{int} **\mbox{\hyperlink{structindividuals_acfa414600eb7a80c714548d6c56d690f}{individual}};}
+\DoxyCodeLine{16     \textcolor{keywordtype}{int} **\mbox{\hyperlink{structindividuals_a443d12bd0d37d57be676cadd17a0e181}{nextindividual}};}
+\DoxyCodeLine{17 \} \mbox{\hyperlink{geneticalgorithm_8h_af545c4acb2983d6cbe2be63e43a9589f}{INDIVIDUAL}};}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structpopulation}{population}} \{}
+\DoxyCodeLine{20     \textcolor{keywordtype}{int} \mbox{\hyperlink{structpopulation_aad8eab95bc6ae0373f10cb2a0bdeb88c}{generation}};}
+\DoxyCodeLine{21     \textcolor{keywordtype}{int} **\mbox{\hyperlink{structpopulation_a91fe484ade671afd2090690e632e6882}{bestIndividuals}};}
+\DoxyCodeLine{22     \textcolor{keyword}{struct }\mbox{\hyperlink{structpopulation}{population}} *\mbox{\hyperlink{structpopulation_ac1a42e12aa9ada10caa73f6c8c4a88de}{next}};}
+\DoxyCodeLine{23     \mbox{\hyperlink{structindividuals}{INDIVIDUAL}} \mbox{\hyperlink{structpopulation_a1afd41d8b02b465984a98e0a5d1b328f}{individuals}};}
+\DoxyCodeLine{24 \} \mbox{\hyperlink{geneticalgorithm_8h_a8050698e0bc2d8fb8b06ca11bcd284f3}{POPULATION}};}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{33 \mbox{\hyperlink{structpopulation}{POPULATION}} *\mbox{\hyperlink{geneticalgorithm_8h_a525791027b32b132c45e9d3ce0c35f7c}{initialPop}}(\mbox{\hyperlink{structpopulation}{POPULATION}} *\mbox{\hyperlink{structpopulation}{population}}, \textcolor{keywordtype}{int} populationSize);}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{46 \mbox{\hyperlink{structpopulation}{POPULATION}} *}
+\DoxyCodeLine{47 \mbox{\hyperlink{geneticalgorithm_8h_a0e84f50278cdfae98ca76b7d5f0c199c}{cycleGeneration}}(\mbox{\hyperlink{structcity_node}{CITYNODE}} *cities, \mbox{\hyperlink{structpopulation}{POPULATION}} *\mbox{\hyperlink{structpopulation}{population}}, \textcolor{keywordtype}{int} populationSize, \textcolor{keywordtype}{int} elitismNumber, \textcolor{keywordtype}{double} mutationRate,}
+\DoxyCodeLine{48                 \textcolor{keywordtype}{int} generations, \textcolor{keywordtype}{int} ID);}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{57 \mbox{\hyperlink{structpopulation}{POPULATION}} *\mbox{\hyperlink{geneticalgorithm_8h_a236ce28f2fdd320bf36e77d806922089}{evaluate\_fitness}}(\mbox{\hyperlink{structcity_node}{CITYNODE}} *cities, \mbox{\hyperlink{structpopulation}{POPULATION}} *\mbox{\hyperlink{structpopulation}{population}}, \textcolor{keywordtype}{int} populationSize);}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{66 \textcolor{keywordtype}{double} \mbox{\hyperlink{geneticalgorithm_8h_a64c0516351688c77fd87216894be2080}{calculateDistance}}(\mbox{\hyperlink{structcity_node}{CITYNODE}} *cities, \textcolor{keywordtype}{int} id\_1, \textcolor{keywordtype}{int} id\_2);}
+\DoxyCodeLine{74 \mbox{\hyperlink{structpopulation}{POPULATION}} *\mbox{\hyperlink{geneticalgorithm_8h_a79305cd337d487ea09556cebacc66e51}{elitism}}(\mbox{\hyperlink{structpopulation}{POPULATION}} *\mbox{\hyperlink{structpopulation}{population}}, \textcolor{keywordtype}{int} elitismNumber, \textcolor{keywordtype}{int} populationSize);}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{84 \mbox{\hyperlink{structpopulation}{POPULATION}} *\mbox{\hyperlink{geneticalgorithm_8h_a88e08987402645b31807f0e2c6f5c2e6}{selection}}(\mbox{\hyperlink{structpopulation}{POPULATION}} *\mbox{\hyperlink{structpopulation}{population}}, \textcolor{keywordtype}{int} elitismNumber, \textcolor{keywordtype}{int} populationSize, \textcolor{keywordtype}{double} fitness\_sum);}
+\DoxyCodeLine{93 \mbox{\hyperlink{structpopulation}{POPULATION}} *\mbox{\hyperlink{geneticalgorithm_8h_af11290aae828ff758e6cdae19c0913d7}{probSelection}}(\mbox{\hyperlink{structpopulation}{POPULATION}} *\mbox{\hyperlink{structpopulation}{population}}, \textcolor{keywordtype}{int} elitismNumber, \textcolor{keywordtype}{int} populationSize, \textcolor{keywordtype}{double} fitness\_sum);}
+\DoxyCodeLine{103 \mbox{\hyperlink{structpopulation}{POPULATION}} *\mbox{\hyperlink{geneticalgorithm_8h_aae89898ff94e788250ffe028f8b2254e}{crossover}}(\mbox{\hyperlink{structpopulation}{POPULATION}} *\mbox{\hyperlink{structpopulation}{population}}, \textcolor{keywordtype}{int} populationSize, \textcolor{keywordtype}{int} elitismNumber, \textcolor{keywordtype}{double} mutationRate);}
+\DoxyCodeLine{111 \textcolor{keywordtype}{int} \mbox{\hyperlink{geneticalgorithm_8h_a8d152794c7ac5571b34f4482f7e74372}{replaceDuplicate}}(\mbox{\hyperlink{structpopulation}{POPULATION}} *\mbox{\hyperlink{structpopulation}{population}}, \textcolor{keywordtype}{int} i, \textcolor{keywordtype}{int} popuLationSize);}
+\DoxyCodeLine{119 \mbox{\hyperlink{structpopulation}{POPULATION}} *\mbox{\hyperlink{geneticalgorithm_8h_a6e7b57aa48cf31613a7add24f4258924}{mutation}}(\mbox{\hyperlink{structpopulation}{POPULATION}} *\mbox{\hyperlink{structpopulation}{population}}, \textcolor{keywordtype}{double} mutationRate, \textcolor{keywordtype}{int} populationSize);}
+\DoxyCodeLine{126 \textcolor{keywordtype}{void} \mbox{\hyperlink{geneticalgorithm_8h_ad0bbf38ef22dbd020267282fb89b3c90}{searchGenerationID}}(\mbox{\hyperlink{structpopulation}{POPULATION}} *\mbox{\hyperlink{structpopulation}{population}}, \textcolor{keywordtype}{int} ID, \textcolor{keywordtype}{int} populationSize);}
+\DoxyCodeLine{137 \mbox{\hyperlink{structpopulation}{POPULATION}} *\mbox{\hyperlink{geneticalgorithm_8h_a92fc94ec822918f6461828819c40f49f}{createNode}}(\mbox{\hyperlink{structcity_node}{CITYNODE}} *cities, \mbox{\hyperlink{structpopulation}{POPULATION}} *\mbox{\hyperlink{structpopulation}{population}}, \textcolor{keywordtype}{int} populationSize, \textcolor{keywordtype}{int} elitismNumber, \textcolor{keywordtype}{double} mutationRate, \textcolor{keywordtype}{int} \mbox{\hyperlink{structpopulation_aad8eab95bc6ae0373f10cb2a0bdeb88c}{generation}});}
+\DoxyCodeLine{138 }
+\DoxyCodeLine{139 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//PROJETO\_LP\_AED\_GENETICALGORITHM\_H}}
+
+\end{DoxyCode}

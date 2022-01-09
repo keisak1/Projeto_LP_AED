@@ -11,10 +11,6 @@ stdio.h
 -
 stdlib.h
 -
-libs_src/lib_stats.h
-C:/Users/Nuno/Desktop/Projeto_LP_AED/libs_src/lib_stats.h
-libs_src/lib_util.h
-C:/Users/Nuno/Desktop/Projeto_LP_AED/libs_src/lib_util.h
 string.h
 -
 stdbool.h
@@ -40,27 +36,17 @@ C:/Users/Nuno/Desktop/Projeto_LP_AED/csvData.h
 tripsandcities.h
 C:/Users/Nuno/Desktop/Projeto_LP_AED/tripsandcities.h
 
-C:/Users/Nuno/Desktop/Projeto_LP_AED/libs_src/lib_stats.h
-stdio.h
--
-float.h
--
-limits.h
--
-math.h
--
+C:/Users/Nuno/Desktop/Projeto_LP_AED/test_1.c
+test_1.h
+C:/Users/Nuno/Desktop/Projeto_LP_AED/test_1.h
 
-C:/Users/Nuno/Desktop/Projeto_LP_AED/libs_src/lib_util.h
-stdio.h
--
-math.h
--
-stdlib.h
--
-windows.h
--
-sys/time.h
--
+C:/Users/Nuno/Desktop/Projeto_LP_AED/test_1.h
+creation_resizing.h
+C:/Users/Nuno/Desktop/Projeto_LP_AED/creation_resizing.h
+tripsandcities.h
+C:/Users/Nuno/Desktop/Projeto_LP_AED/tripsandcities.h
+geneticalgorithm.h
+C:/Users/Nuno/Desktop/Projeto_LP_AED/geneticalgorithm.h
 
 C:/Users/Nuno/Desktop/Projeto_LP_AED/tripsandcities.h
 creation_resizing.h

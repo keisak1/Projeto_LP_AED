@@ -4,29 +4,21 @@
 CMakeFiles/Projeto_LP_AED.dir/creation_resizing.c.obj: \
  ../creation_resizing.c \
  ../creation_resizing.h \
- ../csvData.h \
- ../libs_src/lib_stats.h \
- ../libs_src/lib_util.h
+ ../csvData.h
 CMakeFiles/Projeto_LP_AED.dir/csvData.c.obj: \
  ../creation_resizing.h \
  ../csvData.c \
- ../csvData.h \
- ../libs_src/lib_stats.h \
- ../libs_src/lib_util.h
+ ../csvData.h
 CMakeFiles/Projeto_LP_AED.dir/geneticalgorithm.c.obj: \
  ../creation_resizing.h \
  ../csvData.h \
  ../geneticalgorithm.c \
  ../geneticalgorithm.h \
- ../libs_src/lib_stats.h \
- ../libs_src/lib_util.h \
  ../tripsandcities.h
 CMakeFiles/Projeto_LP_AED.dir/main.c.obj: \
  ../creation_resizing.h \
  ../csvData.h \
  ../geneticalgorithm.h \
- ../libs_src/lib_stats.h \
- ../libs_src/lib_util.h \
  ../main.c \
  ../test_1.h \
  ../tripsandcities.h
@@ -34,15 +26,11 @@ CMakeFiles/Projeto_LP_AED.dir/test_1.c.obj: \
  ../creation_resizing.h \
  ../csvData.h \
  ../geneticalgorithm.h \
- ../libs_src/lib_stats.h \
- ../libs_src/lib_util.h \
  ../test_1.c \
  ../test_1.h \
  ../tripsandcities.h
 CMakeFiles/Projeto_LP_AED.dir/tripsandcities.c.obj: \
  ../creation_resizing.h \
  ../csvData.h \
- ../libs_src/lib_stats.h \
- ../libs_src/lib_util.h \
  ../tripsandcities.c \
  ../tripsandcities.h

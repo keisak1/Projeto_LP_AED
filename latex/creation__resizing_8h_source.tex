@@ -1,0 +1,77 @@
+\hypertarget{creation__resizing_8h_source}{}\doxysection{creation\+\_\+resizing.\+h}
+\mbox{\hyperlink{creation__resizing_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by Nuno on 20/12/2021.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef PROJETO\_LP\_AED\_CREATION\_RESIZING\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define PROJETO\_LP\_AED\_CREATION\_RESIZING\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <stdlib.h>}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <string.h>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <stdbool.h>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <time.h>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <math.h>}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#define BUFFER\_SIZE 1024}}
+\DoxyCodeLine{16 FILE *\mbox{\hyperlink{creation__resizing_8h_aa065f30aa9f5f9a42132c82c787ee70b}{fp}};}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structcity}{city}} \{}
+\DoxyCodeLine{19     \textcolor{keywordtype}{int} \mbox{\hyperlink{structcity_af180e926633cde08a05ccbc3af397ee4}{ID}};}
+\DoxyCodeLine{20     \textcolor{keywordtype}{char} *\mbox{\hyperlink{structcity_a5ac083a645d964373f022d03df4849c8}{name}};}
+\DoxyCodeLine{21     \textcolor{keywordtype}{char} *\mbox{\hyperlink{structcity_a8444d6e0dfe2bbab0b5e7b24308f1559}{description}};}
+\DoxyCodeLine{22     \textcolor{keywordtype}{float} \mbox{\hyperlink{structcity_ad0da36b2558901e21e7a30f6c227a45e}{x}}, \mbox{\hyperlink{structcity_aa4f0d3eebc3c443f9be81bf48561a217}{y}};}
+\DoxyCodeLine{23     \textcolor{keyword}{struct }\mbox{\hyperlink{structcity_1_1poi}{poi}} \{}
+\DoxyCodeLine{24         \textcolor{keywordtype}{int} \mbox{\hyperlink{structcity_1_1poi_a90a489d26b1f4059488ca458f665b0d8}{beaches}}, \mbox{\hyperlink{structcity_1_1poi_a58939a0aa87a6047dbfe7b4f0026d486}{museums}}, \mbox{\hyperlink{structcity_1_1poi_a91632b9c18a44bc394b3b320d967672c}{parks}};}
+\DoxyCodeLine{25     \} \mbox{\hyperlink{structcity_a8f7b4d66f0e70bedd06752ebe26cd37f}{PoI}};}
+\DoxyCodeLine{26 \} \mbox{\hyperlink{creation__resizing_8h_aab2cece41c4817245db92da9a5aeeec8}{CITY}};}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structcity_node}{cityNode}} \{}
+\DoxyCodeLine{29     \mbox{\hyperlink{structcity}{CITY}} \mbox{\hyperlink{structcity_node_a28033f8ee0c278b9a8593c1405660ced}{city}};}
+\DoxyCodeLine{30     \textcolor{keyword}{struct }\mbox{\hyperlink{structcity_node}{cityNode}} *\mbox{\hyperlink{structcity_node_a44ced03db6f5e1e4dfe22f8e3feecfff}{nextcity}};}
+\DoxyCodeLine{31 \} \mbox{\hyperlink{creation__resizing_8h_aee1f5fcf882b94bf368f7116d0758b79}{CITYNODE}};}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structtrips}{trips}} \{}
+\DoxyCodeLine{34     \textcolor{keywordtype}{int} \mbox{\hyperlink{structtrips_a28efcbd38fd75ac4a4f28919bef9966d}{arraySize}};}
+\DoxyCodeLine{35     \textcolor{keywordtype}{int} *\mbox{\hyperlink{structtrips_a40a46eccda8bd8460a30e70758dc03ab}{citiesvisited}};}
+\DoxyCodeLine{36 \} \mbox{\hyperlink{creation__resizing_8h_aa5c8c3adb345bac4792dd1fdbbd81961}{TRIPS}};}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structcustomer}{customer}} \{}
+\DoxyCodeLine{40     \textcolor{keywordtype}{int} \mbox{\hyperlink{structcustomer_a3c8cb391530940750238257a8fcb6aa8}{NIF}};}
+\DoxyCodeLine{41     \textcolor{keywordtype}{int} \mbox{\hyperlink{structcustomer_a7106e2abc437ad981830d14176d15f09}{number}};}
+\DoxyCodeLine{42     \textcolor{keyword}{struct }\mbox{\hyperlink{structcustomer_1_1birth}{birth}} \{}
+\DoxyCodeLine{43         \textcolor{keywordtype}{int} \mbox{\hyperlink{structcustomer_1_1birth_a4c11afc03fc3ee49bab660def6558f2a}{day}}, \mbox{\hyperlink{structcustomer_1_1birth_aedb06abe5aff12fa3e7e0e71a374edfb}{month}}, \mbox{\hyperlink{structcustomer_1_1birth_abeac221e38b7b9ce7df8722c842bf671}{year}};}
+\DoxyCodeLine{44     \} \mbox{\hyperlink{structcustomer_a2a0761a4b4e1f22a61a181339064bba7}{birthday}};}
+\DoxyCodeLine{45     \textcolor{keyword}{struct }\mbox{\hyperlink{structcustomer_1_1_r_e_g_i_s_t_e_r}{REGISTER}} \{}
+\DoxyCodeLine{46         \textcolor{keywordtype}{int} \mbox{\hyperlink{structcustomer_1_1_r_e_g_i_s_t_e_r_a4c11afc03fc3ee49bab660def6558f2a}{day}}, \mbox{\hyperlink{structcustomer_1_1_r_e_g_i_s_t_e_r_aedb06abe5aff12fa3e7e0e71a374edfb}{month}}, \mbox{\hyperlink{structcustomer_1_1_r_e_g_i_s_t_e_r_abeac221e38b7b9ce7df8722c842bf671}{year}};}
+\DoxyCodeLine{47     \} \mbox{\hyperlink{structcustomer_a7f29ff240aa8a4249e69101202d49f54}{registerdate}};}
+\DoxyCodeLine{48     \textcolor{keywordtype}{char} *\mbox{\hyperlink{structcustomer_a879a8cdf605d02f8af8b2e216b8764f2}{address}};}
+\DoxyCodeLine{49     \textcolor{keywordtype}{int} \mbox{\hyperlink{structcustomer_aec2ed6cc8de17e4de653c3a3129a22ef}{billingcost}};}
+\DoxyCodeLine{50     \mbox{\hyperlink{structtrips}{TRIPS}} \mbox{\hyperlink{structcustomer_afdb935e80d7667118bc3d28f148cfc24}{trips}};}
+\DoxyCodeLine{51 \} \mbox{\hyperlink{creation__resizing_8h_abf4ee37e0e98d4f7fd59eab73f71418b}{CUSTOMER}};}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structnode}{node}} \{}
+\DoxyCodeLine{55     \mbox{\hyperlink{structcustomer}{CUSTOMER}} \mbox{\hyperlink{structnode_a8b81c2a3c7d2e7195cfb543342514c3a}{customer}};}
+\DoxyCodeLine{56     \textcolor{keyword}{struct }\mbox{\hyperlink{structnode}{node}} *\mbox{\hyperlink{structnode_a0dc1b6470487aa86d9936e3cab8b95be}{next}};}
+\DoxyCodeLine{57 \} \mbox{\hyperlink{creation__resizing_8h_a52bbaa7600689ce3cd500fc83f7da47c}{LIST\_QUEUE\_NODE}};}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59 }
+\DoxyCodeLine{64 \mbox{\hyperlink{structnode}{LIST\_QUEUE\_NODE}} *\mbox{\hyperlink{creation__resizing_8h_ad061c2b606f9372796f54e9e85d1e7d9}{StoreCustomers}}();}
+\DoxyCodeLine{71 \mbox{\hyperlink{structnode}{LIST\_QUEUE\_NODE}} *\mbox{\hyperlink{creation__resizing_8h_a7138e0057048facf89a4d6ddca44e251}{addCustomerHead}}(\mbox{\hyperlink{structnode}{LIST\_QUEUE\_NODE}} *head);}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{77 \textcolor{keywordtype}{void} \mbox{\hyperlink{creation__resizing_8h_a1e237362a410e6d01689baf9ff0cf348}{addCustomerTail}}(\mbox{\hyperlink{structnode}{LIST\_QUEUE\_NODE}} *tail);}
+\DoxyCodeLine{81 \textcolor{keywordtype}{void} \mbox{\hyperlink{creation__resizing_8h_a44a22fee1962082d61accb8f81e6b377}{printList}}(\mbox{\hyperlink{structnode}{LIST\_QUEUE\_NODE}} *head);}
+\DoxyCodeLine{87 \mbox{\hyperlink{structnode}{LIST\_QUEUE\_NODE}} *\mbox{\hyperlink{creation__resizing_8h_af410ff57582081daccc4b98fb9cebd9e}{deleteCustomer}}(\mbox{\hyperlink{structnode}{LIST\_QUEUE\_NODE}} *head);}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89 \mbox{\hyperlink{structnode}{LIST\_QUEUE\_NODE}} *\mbox{\hyperlink{creation__resizing_8h_a57775fe5436117b416af304f2d696ce2}{addCustomer}}(\mbox{\hyperlink{structnode}{LIST\_QUEUE\_NODE}} *head);}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{96 \mbox{\hyperlink{structnode}{LIST\_QUEUE\_NODE}} *\mbox{\hyperlink{creation__resizing_8h_a75e19bcd09323d07f8bd50ea3480a939}{sortByNIF}}(\mbox{\hyperlink{structnode}{LIST\_QUEUE\_NODE}} *head);}
+\DoxyCodeLine{101 \textcolor{keywordtype}{void} \mbox{\hyperlink{creation__resizing_8h_a8dcf36f0e7a4fa53364f81a5a22b0704}{SearchNIF}}(\mbox{\hyperlink{structnode}{LIST\_QUEUE\_NODE}} *head);}
+\DoxyCodeLine{102 }
+\DoxyCodeLine{103 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//PROJETO\_LP\_AED\_CREATION\_RESIZING\_H}}
+
+\end{DoxyCode}

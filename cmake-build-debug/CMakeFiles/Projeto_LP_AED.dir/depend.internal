@@ -5,28 +5,20 @@ CMakeFiles/Projeto_LP_AED.dir/creation_resizing.c.obj
  C:/Users/Nuno/Desktop/Projeto_LP_AED/creation_resizing.c
  C:/Users/Nuno/Desktop/Projeto_LP_AED/creation_resizing.h
  C:/Users/Nuno/Desktop/Projeto_LP_AED/csvData.h
- C:/Users/Nuno/Desktop/Projeto_LP_AED/libs_src/lib_stats.h
- C:/Users/Nuno/Desktop/Projeto_LP_AED/libs_src/lib_util.h
 CMakeFiles/Projeto_LP_AED.dir/csvData.c.obj
  C:/Users/Nuno/Desktop/Projeto_LP_AED/creation_resizing.h
  C:/Users/Nuno/Desktop/Projeto_LP_AED/csvData.c
  C:/Users/Nuno/Desktop/Projeto_LP_AED/csvData.h
- C:/Users/Nuno/Desktop/Projeto_LP_AED/libs_src/lib_stats.h
- C:/Users/Nuno/Desktop/Projeto_LP_AED/libs_src/lib_util.h
 CMakeFiles/Projeto_LP_AED.dir/geneticalgorithm.c.obj
  C:/Users/Nuno/Desktop/Projeto_LP_AED/creation_resizing.h
  C:/Users/Nuno/Desktop/Projeto_LP_AED/csvData.h
  C:/Users/Nuno/Desktop/Projeto_LP_AED/geneticalgorithm.c
  C:/Users/Nuno/Desktop/Projeto_LP_AED/geneticalgorithm.h
- C:/Users/Nuno/Desktop/Projeto_LP_AED/libs_src/lib_stats.h
- C:/Users/Nuno/Desktop/Projeto_LP_AED/libs_src/lib_util.h
  C:/Users/Nuno/Desktop/Projeto_LP_AED/tripsandcities.h
 CMakeFiles/Projeto_LP_AED.dir/main.c.obj
  C:/Users/Nuno/Desktop/Projeto_LP_AED/creation_resizing.h
  C:/Users/Nuno/Desktop/Projeto_LP_AED/csvData.h
  C:/Users/Nuno/Desktop/Projeto_LP_AED/geneticalgorithm.h
- C:/Users/Nuno/Desktop/Projeto_LP_AED/libs_src/lib_stats.h
- C:/Users/Nuno/Desktop/Projeto_LP_AED/libs_src/lib_util.h
  C:/Users/Nuno/Desktop/Projeto_LP_AED/main.c
  C:/Users/Nuno/Desktop/Projeto_LP_AED/test_1.h
  C:/Users/Nuno/Desktop/Projeto_LP_AED/tripsandcities.h
@@ -34,15 +26,11 @@ CMakeFiles/Projeto_LP_AED.dir/test_1.c.obj
  C:/Users/Nuno/Desktop/Projeto_LP_AED/creation_resizing.h
  C:/Users/Nuno/Desktop/Projeto_LP_AED/csvData.h
  C:/Users/Nuno/Desktop/Projeto_LP_AED/geneticalgorithm.h
- C:/Users/Nuno/Desktop/Projeto_LP_AED/libs_src/lib_stats.h
- C:/Users/Nuno/Desktop/Projeto_LP_AED/libs_src/lib_util.h
  C:/Users/Nuno/Desktop/Projeto_LP_AED/test_1.c
  C:/Users/Nuno/Desktop/Projeto_LP_AED/test_1.h
  C:/Users/Nuno/Desktop/Projeto_LP_AED/tripsandcities.h
 CMakeFiles/Projeto_LP_AED.dir/tripsandcities.c.obj
  C:/Users/Nuno/Desktop/Projeto_LP_AED/creation_resizing.h
  C:/Users/Nuno/Desktop/Projeto_LP_AED/csvData.h
- C:/Users/Nuno/Desktop/Projeto_LP_AED/libs_src/lib_stats.h
- C:/Users/Nuno/Desktop/Projeto_LP_AED/libs_src/lib_util.h
  C:/Users/Nuno/Desktop/Projeto_LP_AED/tripsandcities.c
  C:/Users/Nuno/Desktop/Projeto_LP_AED/tripsandcities.h
